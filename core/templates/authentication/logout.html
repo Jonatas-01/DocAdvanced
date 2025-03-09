@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="logout-box">
+    <h2>Are you sure you want to log out?</h2>
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <button type="submit">Logout</button>
+        {% endif %}
+    </form>
+
+    <a href="{% url 'home' %}">Cancel</a>
+</div>
+{% endblock %}
