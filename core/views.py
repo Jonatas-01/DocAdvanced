@@ -6,12 +6,16 @@ from .forms import ProfileCreationForm
 
 def my_home(request):
     """
+    Render the home page
     """
     return render(request, "index.html")
 
 
 def registration(request):
     """
+    Render the registration page
+    Ensures the user will be registred only if the form is submited and
+    it pass the validation
     """
     if request.method == "POST":
         form = ProfileCreationForm(request.POST)
@@ -32,12 +36,15 @@ def logout_view(request):
     """
     if request.method == "POST":
         logout(request)
-        return redirect("home")
+        return redirect("login")
     return render(request, "authentication/logout.html")
 
 
 def login_view(request):
     """
+    Render the login page
+    Ensures the user log in only if the form is submited and pass the
+    validation.
     """
     if request.method == "POST":
         username = request.POST["username"]
@@ -48,6 +55,7 @@ def login_view(request):
             login(request, user)
             return redirect("home")
         else:
-            messages.add_message(request, messages.ERROR, "Invalid username or password")
+            messages.add_message(request, messages.ERROR,
+                                 "Invalid username or password")
 
     return render(request, "authentication/login.html")
