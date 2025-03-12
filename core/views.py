@@ -22,7 +22,14 @@ def registration(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
-            login(request, user)
+            login(request, user) # log the user in
+
+            if user.role == 'patient':
+                return redirect("patient-form")
+            elif user.role == 'doctor':
+                return redirect("doctor-form")
+            
+            # add message confirmation
             return redirect("home")
     else:
         form = ProfileCreationForm()
