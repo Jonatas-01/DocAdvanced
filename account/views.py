@@ -1,17 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import PatientlDetailsForm, DoctorDetailsForm
 
 
 @login_required
 def patient_details_form(request):
     """
-    Display the form to patients that registred in website
+    Display the form to patients that registered in website
     Ensures the page will only be accessed by patients
     Ensures to handle form submition only if the method is POST
     """
     if request.user.role != 'patient':
-        # display message here
+        messages.error(request, "Only patients has access to this page.")
         return redirect('home')
 
     if request.method == 'POST':
@@ -30,9 +31,12 @@ def patient_details_form(request):
 @login_required
 def doctor_details_form(request):
     """
+    Display the form to doctor that registered in website
+    Ensures the page will only be accessed by doctors
+    Ensures to handle form submition only if the method is POST
     """
     if request.user.role != 'doctor':
-        # display message here
+        messages.error(request, "Only patients has access to this page.")
         return redirect('home')
 
     if request.method == 'POST':
