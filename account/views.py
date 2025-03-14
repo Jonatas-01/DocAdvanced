@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .models import PatientDetails, DoctorDetails
 from .forms import PatientlDetailsForm, DoctorDetailsForm
 
 
@@ -50,3 +51,56 @@ def doctor_details_form(request):
         form = DoctorDetailsForm()
 
     return render(request, "forms/doctor_form.html", {'form': form})
+
+
+@login_required
+def account_view(request):
+    """
+    Display user details based on their role or redirect to the appropriate form.
+    """
+    details_model = PatientDetails if request.user.role == 'patient' else DoctorDetails
+
+    if not details_model.objects.filter(user=request.user).exists():
+        messages.add_message(
+            request, messages.ERROR, "Unauthorized access. Please fill out your Personal Details Form first."
+        )
+        return redirect('patient-form' if request.user.role == 'patient' else 'doctor-form')
+
+    template = "accounts/patient_details.html" if request.user.role == 'patient' else "accounts/doctor_details.html"
+    details = get_object_or_404(details_model, user=request.user)
+
+    return render(request, template, {'details': details})
+
+
+@login_required
+def edit_details(request):
+    """
+    Allow users to edit their personal details based on their role or redirect to the appropriate form.
+    """
+    details_model = PatientDetails if request.user.role == 'patient' else DoctorDetails
+
+    if not details_model.objects.filter(user=request.user).exists():
+        messages.add_message(
+            request, messages.ERROR, "Unauthorized access. Please fill out your Personal Details Form first."
+        )
+        return redirect('patient-form' if request.user.role == 'patient' else 'doctor-form')
+    
+    if request.user.role == 'patient':
+        details = get_object_or_404(PatientDetails, user=request.user)
+        form_details = PatientlDetailsForm
+        template = "forms/edit_patient_details.html"
+    else:
+        details = get_object_or_404(DoctorDetails, user=request.user)
+        form_details = DoctorDetailsForm
+        template = "forms/edit_doctor_details.html"
+
+    if request.method == 'POST':
+        form = form_details(request.POST, instance=details)
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS, "Your details have been updated successfully.")
+            return redirect('account-details')
+    else:
+        form = form_details(instance=details)
+    
+    return render(request, template, {'form': form})

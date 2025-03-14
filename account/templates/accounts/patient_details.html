@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% url 'edit-details' as edit_details %}
+
+{% block content %}
+<div class="details-container">
+    <h1>Acount Personal Detials</h1>
+    <br>
+
+    <h2>First Name: <span style="color: gray;">{{ details.first_name }}</span></h2>
+    <h2>Last Name: <span style="color: gray;">{{ details.last_name }}</span></h2>
+    <h2>Age: <span style="color: gray;">{{ details.age }}</span></h2>
+    <h2>Gender: <span style="color: gray;">{{ details.gender }}</span></h2>
+    <h2>Contact for Information: <span style="color: gray;">{{details.contact_info}}</span></h2>
+    <a class="btn" href="{% url 'edit-details' %}">Edit Details</a>
+</div>
+{% endblock %}
