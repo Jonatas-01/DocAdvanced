@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 
+
 {% block content %}
-<div class="logout-box">
-    <h2>Are you sure you want to log out?</h2>
+<div class="row justify-content-center align-items-center mx-2">
+    <div class="col-sm-12 col-md-6 login-box">
+        <h2 class="text-center">Are you sure you want to log out?</h2>
 
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        {% if user.is_authenticated %}
-        <button type="submit">Logout</button>
-        {% endif %}
-    </form>
-
-    <a href="{% url 'home' %}">Cancel</a>
+        <div class="row justify-content-center">
+            <form action="{% url 'logout' %}" method="post" class="col-6">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                <div class="d-flex justify-content-around gap-3">
+                    <button class="btn btn-danger fs-5 my-3 px-4" type="submit">Yes</button>
+                    <a href="{% url 'home' %}" class="btn btn-success fs-5 my-3">Cancel</a>
+                </div>
+                {% endif %}
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}
