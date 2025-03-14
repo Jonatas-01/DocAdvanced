@@ -2,6 +2,20 @@
     font-family: "Quicksand", sans-serif;
 }
 
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
 #logout-nav {
     border: 1.2px solid rgb(196, 11, 11);
     border-radius: 8px;
@@ -22,6 +36,10 @@
 #register-nav:hover {
     color: white;
     background-color: rgb(73, 121, 226);
+}
+
+#footer {
+    background-color: rgb(36, 105, 253);
 }
 
 .active {

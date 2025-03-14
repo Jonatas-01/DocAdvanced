@@ -32,7 +32,7 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white px-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-2">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold fs-2" href="{% url 'home' %}">Doc<span
                     style="color: rgb(85, 129, 224);">Advanced</span></a>
@@ -85,12 +85,21 @@
         {% endfor %}
     </div>
 
-    <main class="container">
+    <main class="">
         {% block content %}
         <!-- Contents from other pages goes here -->
         {% endblock content %}
     </main>
 
+    <!-- Footer -->
+    <footer id="footer" class="footer mt-auto py-2">
+        <p class="m-1 text-center text-white">Designed and Build by Jonatas Mendes</p>
+        <p class="m-0 text-center text-white">Follow Me:
+            <i class="fab fa-github-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+        </p>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
         </script>
