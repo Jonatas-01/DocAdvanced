@@ -4,21 +4,22 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="row justify-content-center align-items-center mx-2">
-    <div class="col-sm-12 col-md-6 login-box">
-        <h2 class="text-center">Create your account</h2>
-        <p class="text-center text-secondary">Sign up to be part of our team</p>
-        {% if form.errors %}
-        <p style="color: red;">Invalid username or password.</p>
-        {% endif %}
-        <form method="post" class="form">
-            {% csrf_token %}
-            {{ form | crispy }}
-            <div class="justify-content-center">
-                <button id="login-btn" type="submit" class="btn btn-primary fs-5 my-3">Register</button>
-            </div>
-        </form>
+<div class="container py-4">
+    <div class="form-box row justify-content-center align-items-center mx-2 form-box">
+        <div class="col-sm-12 col-md-6 login-box">
+            <h2 class="text-center">Create your account</h2>
+            <p class="text-center text-secondary">Sign up to be part of our team</p>
+            {% if form.errors %}
+            <p style="color: red;">Invalid username or password.</p>
+            {% endif %}
+            <form method="post" class="form">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="justify-content-center">
+                    <button id="login-btn" type="submit" class="btn btn-primary fs-5 my-3">Register</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
 {% endblock %}

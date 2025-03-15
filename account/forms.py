@@ -9,7 +9,7 @@ class PatientlDetailsForm(forms.ModelForm):
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your first name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your last name'}),
-            'last_name': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter your age'}),
+            'age': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter your age'}),
             'gender': forms.Select(attrs={'class': 'form-select'}),
             'contact_info': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email address'}),
         }

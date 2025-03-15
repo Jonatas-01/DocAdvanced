@@ -3,15 +3,48 @@
 {% url 'edit-details' as edit_details %}
 
 {% block content %}
-<div class="details-container">
-    <h1>Acount Personal Detials</h1>
-    <br>
+<div class="container pb-5">
+    <div class="my-3">
+        <h1 class="fw-bold">Account Details</h1>
+    </div>
 
-    <h2>First Name: <span style="color: gray;">{{ details.first_name }}</span></h2>
-    <h2>Last Name: <span style="color: gray;">{{ details.last_name }}</span></h2>
-    <h2>Age: <span style="color: gray;">{{ details.age }}</span></h2>
-    <h2>Gender: <span style="color: gray;">{{ details.gender }}</span></h2>
-    <h2>Contact for Information: <span style="color: gray;">{{details.contact_info}}</span></h2>
-    <a class="btn" href="{% url 'edit-details' %}">Edit Details</a>
-</div>
+    <div id="doctor-information">
+        <div class="d-flex justify-content-between">
+            <div class="d-block">
+                <h3>Patient Information</h3>
+                <p class="text-secondary">Personal details.</p>
+            </div>
+            <div class="d-flex align-items-center">
+                <a href="{% url 'edit-details' %}" id="register-nav" class="btn fs-6 p-2 px-4">Edit</a>
+            </div>
+        </div>
+        <hr class="m-0">
+
+        <div class="personal-box">
+            <h4>Personal Information</h4>
+        </div>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col ">
+                    <p class="text-secondary my-0">First Name</p>
+                    <p class="fs-5 details-info text-capitalize">{{ details.first_name }}</p>
+                </div>
+                <div class="col">
+                    <p class="text-secondary my-0">Last Name</p>
+                    <p class="fs-5 details-info text-capitalize">{{ details.last_name }}</p>
+                </div>
+                <div class="col">
+                    <p class="text-secondary my-0">Age</p>
+                    <p class="fs-5 details-info">{{ details.age }}</p>
+                </div>
+                <div class="col">
+                    <p class="text-secondary my-0">Gender</p>
+                    <p class="fs-5 details-info">{{ details.gender }}</p>
+                </div>
+                <div class="col">
+                    <p class="text-secondary my-0">Contact Information</p>
+                    <p class="fs-5 details-info">{{ details.contact_info }}</p>
+                </div>
+            </div>
+        </div>
 {% endblock %}
