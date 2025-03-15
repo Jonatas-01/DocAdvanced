@@ -60,10 +60,10 @@ main {
     font-weight: 500;
 }
 
-#register-form label {
-    font-size: 1.5rem;
+.form label {
+    font-size: 1.25rem;
 }
 
-#register-form input {
-    font-size: 1.25rem;
+.form input {
+    font-size: 1rem;
 }

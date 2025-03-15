@@ -11,7 +11,7 @@
         {% if form.errors %}
         <p style="color: red;">Invalid username or password.</p>
         {% endif %}
-        <form method="post" id="register-form">
+        <form method="post" class="form">
             {% csrf_token %}
             {{ form | crispy }}
             <div class="justify-content-center">

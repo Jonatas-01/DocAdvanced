@@ -32,9 +32,9 @@
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white px-2">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-2 py-0">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold fs-2" href="{% url 'home' %}">Doc<span
+            <a class="navbar-brand fw-bold fs-3" href="{% url 'home' %}">Doc<span
                     style="color: rgb(85, 129, 224);">Advanced</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link fs-5 {% if request.path == my_home %}active{% endif %}" aria-current="page"
+                        <a class="nav-link fs-6 {% if request.path == my_home %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}">Home</a>
                     </li>
 
@@ -52,20 +52,20 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link fs-5 {% if request.path == account_view %}active{% endif %}"
+                            <a class="nav-link fs-6 {% if request.path == account_view %}active{% endif %}"
                                 aria-current="page" href="{% url 'account-details' %}">Account</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-5 p-2 {% if request.path == logout %}active{% endif %}"
+                            <a class="nav-link fs-6 p-2 {% if request.path == logout %}active{% endif %}"
                                 id="logout-nav" aria-current="page" href="{% url 'logout' %}">Log Out</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link fs-5 {% if request.path == login %}active{% endif %}" aria-current="page"
+                            <a class="nav-link fs-6 {% if request.path == login %}active{% endif %}" aria-current="page"
                                 href="{% url 'login' %}">Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-5 p-2 {% if request.path == registration %}active{% endif %}"
+                            <a class="nav-link fs-6 p-2 {% if request.path == registration %}active{% endif %}"
                                 id="register-nav" aria-current="page" href="{% url 'register' %}">Register</a>
                         </li>
                         {% endif %}
@@ -74,6 +74,7 @@
             </div>
         </div>
     </nav>
+    <hr class="m-0">
 
     <!-- Display Django messages -->
     <div class="col-md-8 offset-md-2">
@@ -85,7 +86,7 @@
         {% endfor %}
     </div>
 
-    <main class="">
+    <main class="flex-shrink-0 main-bg">
         {% block content %}
         <!-- Contents from other pages goes here -->
         {% endblock content %}
@@ -93,7 +94,7 @@
 
     <!-- Footer -->
     <footer id="footer" class="footer mt-auto py-2">
-        <p class="m-1 text-center text-white">Designed and Build by Jonatas Mendes</p>
+        <p class="m-1 text-center text-white">Designed and Builded by Jonatas Mendes</p>
         <p class="m-0 text-center text-white">Follow Me:
             <i class="fab fa-github-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>

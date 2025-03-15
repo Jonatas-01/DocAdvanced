@@ -9,12 +9,17 @@ from .forms import PatientlDetailsForm, DoctorDetailsForm
 def patient_details_form(request):
     """
     Display the form to patients that registered in website
-    Ensures the page will only be accessed by patients
+    Ensures the page will only be accessed by patients hat have not filled
+    the personal details form yet
     Ensures to handle form submition only if the method is POST
     """
     if request.user.role != 'patient':
         messages.error(request, "Only patients has access to this page.")
         return redirect('home')
+    
+    if PatientDetails.objects.filter(user=request.user).exists():
+        messages.add_message(request, messages.ERROR, "You have been filled this form already.")
+        return redirect('account-details')
 
     if request.method == 'POST':
         form = PatientlDetailsForm(request.POST)
@@ -33,12 +38,17 @@ def patient_details_form(request):
 def doctor_details_form(request):
     """
     Display the form to doctor that registered in website
-    Ensures the page will only be accessed by doctors
+    Ensures the page will only be accessed by doctors that have not filled
+    the personal details form yet
     Ensures to handle form submition only if the method is POST
     """
     if request.user.role != 'doctor':
-        messages.error(request, "Only patients has access to this page.")
+        messages.error(request, "Only patients have access to this page.")
         return redirect('home')
+    
+    if DoctorDetails.objects.filter(user=request.user).exists():
+        messages.add_message(request, messages.ERROR, "You have been filled this form already.")
+        return redirect('account-details')
 
     if request.method == 'POST':
         form = DoctorDetailsForm(request.POST)
