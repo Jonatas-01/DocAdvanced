@@ -90,4 +90,10 @@ main {
     border: 1px solid rgb(218, 218, 218);
     border-radius: 8px;
     padding: 6px 10px;
+    font-weight: 500;
+}
+
+.account-title {
+    font-family: "Rubik", sans-serif;
+    font-weight: 900;
 }
