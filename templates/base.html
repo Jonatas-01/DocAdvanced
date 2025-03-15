@@ -46,15 +46,16 @@
                         <a class="nav-link fs-6 {% if request.path == my_home %}active{% endif %}" aria-current="page"
                             href="{% url 'home' %}">Home</a>
                     </li>
-
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 {% if request.path == account_view %}active{% endif %}"
+                            aria-current="page" href="{% url 'account-details' %}">Account</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <div class="d-flex justify-content-end">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
                         {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link fs-6 {% if request.path == account_view %}active{% endif %}"
-                                aria-current="page" href="{% url 'account-details' %}">Account</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link fs-6 p-2 {% if request.path == logout %}active{% endif %}"
                                 id="logout-nav" aria-current="page" href="{% url 'logout' %}">Log Out</a>
