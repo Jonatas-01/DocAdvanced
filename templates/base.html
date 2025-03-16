@@ -5,6 +5,7 @@
 {% url 'logout' as logout %}
 {% url 'login' as login %}
 {% url 'account-details' as account_view %}
+{% url 'appointments' as appointments_view %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -47,6 +48,10 @@
                             href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 {% if request.path == appointments_view %}active{% endif %}" aria-current="page"
+                            href="{% url 'appointments' %}">Appointments</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 {% if request.path == account_view %}active{% endif %}"
                             aria-current="page" href="{% url 'account-details' %}">Account</a>
@@ -94,7 +99,7 @@
 
     <!-- Footer -->
     <footer id="footer" class="footer mt-auto py-2">
-        <p class="m-1 text-center text-white">Designed and Builded by Jonatas Mendes</p>
+        <p class="m-1 text-center text-white">Designed and Built by Jonatas Mendes</p>
         <p class="m-0 text-center text-white">Follow Me:
             <i class="fab fa-github-square ms-3"></i>
             <i class="fab fa-twitter-square ms-3"></i>

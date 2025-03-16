@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% url 'request_appointment' as request_appointment %}
+
+{% block content %}
+<div class="container pb-5">
+    <div class="my-3">
+        <h1 class="fw-bold main-title">Find and Book Appointments</h1>
+    </div>
+    <div>
+        <p class="text-secondary">Your appointments will appears here.</p>
+    </div>
+
+    {% if doctors %}
+    <div class="doc-container container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for doctor in doctors %}
+            <div class="col">
+                <div class="col card shadow-sm p-3 doc-box h-100 d-flex flex-column" style="max-height: 400px;">
+                    <h5 class="">Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h5>
+                    <h5 class="text-secondary">{{ doctor.gender }}</h5>
+                    <h5 style="color: rgb(85, 129, 224);">{{ doctor.specialty }}</h5>
+                    <h5 class="">{{ doctor.contact_info }}</h5>
+
+                    <div class="flex-grow-1 overflow-hidden">
+                        <p class="text-muted my-2">{{ doctor.about }}</p>
+                    </div>
+
+                    <a href="{% url 'request_appointment' doctor.id %}" class="btn btn-primary p-2 mt-3">Book Appointment</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+        <p>No doctors</p>
+    {% endif %}
+</div>
+
+{% endblock %}

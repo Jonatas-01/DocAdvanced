@@ -26,5 +26,5 @@ class DoctorDetailsForm(forms.ModelForm):
             'gender': forms.Select(attrs={'class': 'form-select'}),
             'contact_info': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email address'}),
             'specialty': forms.Select(attrs={'class': 'form-select'}),
-            'about': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Tell us about yourself and your career', 'rows': 5}),
+            'about': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Tell us a bit about yourself and your methods, try keep it simple.', 'rows': 5}),
         }

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% url 'appointments' as appointments %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="my-3">
+        <h1 class="fw-bold main-title">Book Appointment</h1>
+    </div>
+    <div class="form-box">
+        <h4>You're booking an appointment with <strong>Dr. {{ doctor.first_name }} {{ doctor.last_name }}</strong>.</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div class="d-flex justify-content-evenly">
+                <button type="submit" class="btn btn-primary">Confirm Appointment</button>
+                <a class="btn btn-danger" href="{% url 'appointments' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

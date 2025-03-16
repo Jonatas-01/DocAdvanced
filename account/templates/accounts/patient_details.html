@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container pb-5">
     <div class="my-3">
-        <h1 class="fw-bold account-title">Account Details</h1>
+        <h1 class="fw-bold main-title">Account Details</h1>
     </div>
 
     <div id="doctor-information">
@@ -22,6 +22,7 @@
 
         <div class="personal-box">
             <h4>Personal Information</h4>
+            <p class="text-muted">{{ user.username }}</p>
         </div>
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2">
