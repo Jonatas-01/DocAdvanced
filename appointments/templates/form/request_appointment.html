@@ -9,7 +9,7 @@
         <h1 class="fw-bold main-title">Book Appointment</h1>
     </div>
     <div class="form-box">
-        <h4>You're booking an appointment with <strong>Dr. {{ doctor.first_name }} {{ doctor.last_name }}</strong>.</h4>
+        <h4>You're booking an appointment with <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span> <strong>Dr. {{ doctor.first_name }} {{ doctor.last_name }}</strong>.</h4>
         <form method="POST">
             {% csrf_token %}
             {{ form | crispy }}
