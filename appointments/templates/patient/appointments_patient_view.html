@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% url 'request_appointment' as request_appointment %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container pb-5">
@@ -28,21 +29,66 @@
                         <p class="fs-5 mt-1 mb-0">Specialty: <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
                         <p class="fs-5 mt-1 mb-0">Doctor: {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</p>
                         <div class="d-flex justify-content-between p-2 mt-1">
-                            <!-- opens a model to edit appointment -->
-                            <a class="btn btn-outline-primary px-4" href="">Edit</a>
-                            <!-- opens a model to cancel appointment -->
-                            <a class="btn btn-danger" href="">Cancel</a>
+                            <button class="btn btn-outline-primary px-4" data-bs-toggle="modal" data-bs-target="#editModal{{ appointment.id }}">Edit</button>
+                            <button class="btn btn-danger px-3" data-bs-toggle="modal" data-bs-target="#cancelModal{{ appointment.id }}">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cancel Appointment -->
+                <div class="modal fade" id="cancelModal{{ appointment.id }}" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Cancel Appointment</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to cancel this appointment?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="action" value="cancel" class="btn btn-danger">Cancel</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Appointment Modal -->
+                <div class="modal fade" id="editModal{{ appointment.id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Appointment</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ form | crispy }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="action" value="edit" class="btn btn-success">Edit Appointment</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         {% else %}
-        <p class="text-secondary">Your appointments will appears here.</p>
+        <p class="text-secondary">Your confirmed appointments will appears here.</p>
         {% endif %}
         <hr>
         </div>
 
+        <!-- Pending Appointments -->
         <div class="container mt-4 px-0">
             <h3>Pending Appointments</h3>
             {% if pending_appointments %}
@@ -52,17 +98,60 @@
                     <div class="col card shadow-sm p-3 d-flex ">
                         <div class="d-flex justify-content-between">
                             <p class="text-muted m-0">Status: <span class="text-warning fw-bold">{{ appointment.get_status_display }}</span></p>
-                            {% if appointment.schedule_date %}
-                            <p class="text-secondary m-0">On: <span class="text-success fw-bold">{{ appointment.schedule_date }}</span></p>
-                            {% endif %}
+                            <p class="text-secondary m-0">On: <span class="text-dark fw-bold">{{ appointment.requested_date }}</span></p>
                         </div>
                         <p class="fs-5 mt-1 mb-0">Specialty: <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
-                        <p class="fs-5 mt-1 mb-0">Doctor: {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</p>
+                        <p class="fs-5 mt-1 mb-0">Doctor: <span class="text-dark fw-bold">{{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</span></p>
                         <div class="d-flex justify-content-between p-2 mt-1">
-                            <!-- opens a model to cancel appointment -->
-                            <a class="btn btn-outline-primary px-4" href="">Edit</a>
-                            <!-- opens a model to cancel appointment -->
-                            <a class="btn btn-danger" href="">Cancel</a>
+                            <button class="btn btn-outline-primary px-4" data-bs-toggle="modal" data-bs-target="#editModal{{ appointment.id }}">Edit</button>
+                            <button class="btn btn-danger px-3" data-bs-toggle="modal" data-bs-target="#cancelModal{{ appointment.id }}">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cancel Appointment -->
+                <div class="modal fade" id="cancelModal{{ appointment.id }}" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Cancel Appointment</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to cancel this appointment?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="action" value="cancel" class="btn btn-danger">Cancel</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Back</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edit Appointment Modal -->
+                <div class="modal fade" id="editModal{{ appointment.id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Appointment</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="notes">Notes:</label>
+                                    <textarea name="notes" class="form-control">{{ appointment.notes }}</textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="action" value="edit" class="btn btn-success">Edit Appointment</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

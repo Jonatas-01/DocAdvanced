@@ -25,10 +25,31 @@ def appointments_patient_view(request):
 
     doctors = DoctorDetails.objects.all()
 
+    if request.method == 'POST':
+        appointment_id = request.POST.get('appointment_id')
+        action = request.POST.get('action')
+
+        appointment = get_object_or_404(
+            Appointment, id=appointment_id, patient=patient)
+
+        if action == 'cancel':
+            appointment.delete()
+            messages.warning(request, "Appointment has been canceled.")
+            return redirect('appointments')
+
+        elif action == 'edit':
+            notes = request.POST.get('notes')
+            if notes:
+                appointment.notes = notes
+                appointment.status = "pending"
+                appointment.save()
+                messages.success(
+                    request, f"Your appointment with Dr. {appointment.doctor.first_name} {appointment.doctor.last_name} has been updated.")
+
     return render(request, "patient/appointments_patient_view.html", {
         'doctors': doctors,
         'pending_appointments': pending_appointments,
-        'confirmed_appointments': confirmed_appointments
+        'confirmed_appointments': confirmed_appointments,
     })
 
 
