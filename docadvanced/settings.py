@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rw$r#a76i59mmo$9c6-^3h(vnm&ih#knpaq&fqxeby3m1)1*ie'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
@@ -134,7 +134,7 @@ USE_TZ = True
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',
     messages.ERROR: 'alert-danger',
-    messages.WARNING: 'alet-warning',
+    messages.WARNING: 'alert-warning',
 }
 
 # Static files (CSS, JavaScript, Images)

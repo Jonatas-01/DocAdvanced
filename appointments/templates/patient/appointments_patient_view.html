@@ -9,39 +9,76 @@
     </div>
 
     <div class="container mt-4">
-        <h2>Your appointments</h2>
-        {% if appointments %}
-        <div class="row row-cols-1 row-cols-md-4 g-4">
-        {% for appointment in appointments %}
-            <div class="col">
-                <div class="col card shadow-sm p-3 d-flex ">
-                    <div class="d-flex justify-content-between">
-                        <p class="text-muted m-0">Status: <span class="text-dark fw-bold">{{ appointment.get_status_display }}</span></p>
-                        {% if appointment.schedule_date %}
-                        <p class="text-secondary m-0">On: <span class="text-success fw-bold">{{ appointment.schedule_date }}</span></p>
-                        {% endif %}
-                    </div>
-                    <p class="fs-5 mt-1 mb-0">Specialty: <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
-                    <p class="fs-5 mt-1 mb-0">Doctor: {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</p>
-                    <div class="d-flex justify-content-between p-2 mt-1">
-                        <!-- opens a model to cancel appointment -->
-                        <a class="btn btn-danger" href="">Cancel</a>
-                        <!-- opens a model to cancel appointment -->
-                        <a class="btn btn-primary" href="">Edit</a>
+        <h2 class="fw-bold">Your appointments</h2>
+        
+        <!-- Confirmed Appointments -->
+        <div class="container mt-4 px-0">
+            <h3>Upcoming Appointments</h3>
+            {% if confirmed_appointments %}
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                {% for appointment in confirmed_appointments %}
+                <div class="col">
+                    <div class="col card shadow-sm p-3 d-flex ">
+                        <div class="d-flex justify-content-between">
+                            <p class="text-muted m-0">Status: <span class="text-success fw-bold">{{ appointment.get_status_display }}</span></p>
+                            {% if appointment.schedule_date %}
+                            <p class="text-secondary m-0">On: <span class="text-success fw-bold">{{ appointment.schedule_date }}</span></p>
+                            {% endif %}
+                        </div>
+                        <p class="fs-5 mt-1 mb-0">Specialty: <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
+                        <p class="fs-5 mt-1 mb-0">Doctor: {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</p>
+                        <div class="d-flex justify-content-between p-2 mt-1">
+                            <!-- opens a model to edit appointment -->
+                            <a class="btn btn-outline-primary px-4" href="">Edit</a>
+                            <!-- opens a model to cancel appointment -->
+                            <a class="btn btn-danger" href="">Cancel</a>
+                        </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
         {% else %}
         <p class="text-secondary">Your appointments will appears here.</p>
         {% endif %}
+        <hr>
+        </div>
+
+        <div class="container mt-4 px-0">
+            <h3>Pending Appointments</h3>
+            {% if pending_appointments %}
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            {% for appointment in pending_appointments %}
+                <div class="col">
+                    <div class="col card shadow-sm p-3 d-flex ">
+                        <div class="d-flex justify-content-between">
+                            <p class="text-muted m-0">Status: <span class="text-warning fw-bold">{{ appointment.get_status_display }}</span></p>
+                            {% if appointment.schedule_date %}
+                            <p class="text-secondary m-0">On: <span class="text-success fw-bold">{{ appointment.schedule_date }}</span></p>
+                            {% endif %}
+                        </div>
+                        <p class="fs-5 mt-1 mb-0">Specialty: <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
+                        <p class="fs-5 mt-1 mb-0">Doctor: {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</p>
+                        <div class="d-flex justify-content-between p-2 mt-1">
+                            <!-- opens a model to cancel appointment -->
+                            <a class="btn btn-outline-primary px-4" href="">Edit</a>
+                            <!-- opens a model to cancel appointment -->
+                            <a class="btn btn-danger" href="">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-secondary">You have no pending appointments.</p>
+            {% endif %}
+        </div>
+        <hr>
     </div>
 
     {% if doctors %}
     <div class="doc-container container mt-5">
-        <h2>Book an appointment</h2>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <h2 class="fw-bold">Book an appointment</h2>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             {% for doctor in doctors %}
             <div class="col">
                 <div class="col card shadow-sm p-3 doc-box d-flex h-100 flex-column" style="max-height: 400px;">

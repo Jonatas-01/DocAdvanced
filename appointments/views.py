@@ -17,11 +17,19 @@ def appointments_patient_view(request):
         return redirect('home')
 
     patient = get_object_or_404(PatientDetails, user=request.user)
-    appointments = Appointment.objects.filter(patient=patient)
+
+    pending_appointments = Appointment.objects.filter(
+        patient=patient, status="pending")
+    confirmed_appointments = Appointment.objects.filter(
+        patient=patient, status="confirmed")
 
     doctors = DoctorDetails.objects.all()
 
-    return render(request, "patient/appointments_patient_view.html", {'doctors': doctors, 'appointments': appointments})
+    return render(request, "patient/appointments_patient_view.html", {
+        'doctors': doctors,
+        'pending_appointments': pending_appointments,
+        'confirmed_appointments': confirmed_appointments
+    })
 
 
 @login_required
@@ -41,8 +49,6 @@ def appointments_doctor_view(request):
         doctor=doctor, status="pending")
     confirmed_appointments = Appointment.objects.filter(
         doctor=doctor, status="confirmed")
-
-    # appointments = Appointment.objects.filter(doctor=doctor)
 
     if request.method == 'POST':
         appointment_id = request.POST.get('appointment_id')
