@@ -68,7 +68,8 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{ form | crispy }}
+                                    <label for="notes">Notes:</label>
+                                    <textarea name="notes" class="form-control">{{ appointment.notes }}</textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" name="action" value="edit" class="btn btn-success">Edit Appointment</button>
