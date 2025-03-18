@@ -9,7 +9,20 @@ from .forms import AppointmentRequestForm
 @login_required
 def appointments_patient_view(request):
     """
-
+    Handles the view for patient appointments.
+    This view performs the following actions:
+    - Checks if the user has the 'patient' role. If not, redirects to the home page with an error message.
+    - Retrieves the patient's details based on the logged-in user.
+    - Fetches the patient's appointments categorized by their status: pending, confirmed, rejected, or canceled.
+    - Retrieves all doctor details.
+    - Handles POST requests to perform actions on appointments:
+        - Cancel an appointment.
+        - Edit an appointment's notes and set its status to pending.
+        - Delete an appointment.
+    Args:
+        request (HttpRequest): The HTTP request object.
+    Returns:
+        HttpResponse: The rendered HTML page for patient appointments.
     """
 
     if request.user.role != 'patient':
@@ -49,7 +62,7 @@ def appointments_patient_view(request):
                     request, f"Your appointment with Dr. {appointment.doctor.first_name} {appointment.doctor.last_name} has been updated.")
         elif action == 'delete':
             appointment.delete()
-            messages.danger(request, "Appointment has been deleted.")
+            messages.error(request, "Appointment has been deleted.")
             return redirect('appointments')
 
     return render(request, "patient/appointments_patient_view.html", {
@@ -72,7 +85,6 @@ def appointments_doctor_view(request):
 
     doctor = get_object_or_404(DoctorDetails, user=request.user)
 
-    # Fetch pending and confirmed appointments
     pending_appointments = Appointment.objects.filter(
         doctor=doctor, status="pending")
     confirmed_appointments = Appointment.objects.filter(
