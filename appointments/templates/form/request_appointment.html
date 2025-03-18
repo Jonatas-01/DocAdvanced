@@ -14,7 +14,7 @@
             {% csrf_token %}
             {{ form | crispy }}
             <div class="d-flex justify-content-evenly">
-                <button type="submit" class="btn btn-primary">Confirm Appointment</button>
+                <button type="submit" class="btn btn-primary">Request Appointment</button>
                 <a class="btn btn-danger" href="{% url 'appointments' %}">Cancel</a>
             </div>
         </form>

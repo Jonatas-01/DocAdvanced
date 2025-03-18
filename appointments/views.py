@@ -89,6 +89,8 @@ def appointments_doctor_view(request):
         doctor=doctor, status="pending")
     confirmed_appointments = Appointment.objects.filter(
         doctor=doctor, status="confirmed")
+    rejected_canceled_appointments = Appointment.objects.filter(
+        doctor=doctor, status__in=['rejected', 'canceled'])
 
     if request.method == 'POST':
         appointment_id = request.POST.get('appointment_id')
@@ -109,16 +111,38 @@ def appointments_doctor_view(request):
             else:
                 messages.error(
                     request, "Please provide a valid date for confirmation.")
-                
         elif action == 'reject':
             appointment.status = 'rejected'
             appointment.save()
             messages.warning(request, "Appointment has been rejected.")
             return redirect('appointments')
+        elif action == 'edit':
+            scheduled_date = request.POST.get('scheduled_date')
+            if scheduled_date:
+                appointment.scheduled_date = scheduled_date
+                appointment.save()
+                messages.success(
+                    request, f"Your appointment with {appointment.patient.first_name} {appointment.patient.last_name} has been reschedule.")
+                return redirect('appointments')
+            else:
+                messages.error(
+                    request, "Please provide a valid date for confirmation.")
+        elif action == 'cancel':
+            appointment.status = 'canceled'
+            appointment.save()
+            messages.warning(
+                request, f"Your appointment with Dr. {appointment.patient.first_name} {appointment.patient.last_name} has been canceled.")
+            return redirect('appointments')
+        elif action == 'delete':
+            appointment.delete()
+            messages.error(
+                request, f"Your appointment with Dr. {appointment.patient.first_name} {appointment.patient.last_name} has been deleted.")
+            return redirect('appointments')
 
     return render(request, "doctor/appointment_doctor_view.html", {
         'pending_appointments': pending_appointments,
-        'confirmed_appointments': confirmed_appointments
+        'confirmed_appointments': confirmed_appointments,
+        'rejected_canceled_appointments': rejected_canceled_appointments,
     })
 
 

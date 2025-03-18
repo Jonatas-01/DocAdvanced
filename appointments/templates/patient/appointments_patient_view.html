@@ -22,7 +22,7 @@
                     <div class="col card shadow-sm p-3 d-flex ">
                         <div class="d-flex justify-content-between">
                             <p class="text-muted m-0">Status: <span class="text-success fw-bold">{{ appointment.get_status_display }}</span></p>
-                            <p class="text-secondary m-0">On: <span class="text-dark fw-bold">{{ appointment.scheduled_date }}</span></p>
+                            <p class="text-secondary m-0">On: <span class="text-dark fw-bold">{{ appointment.scheduled_date|date:"d-m-Y H:i" }}</span></p>
                         </div>
                         <p class="fs-5 mt-1 mb-0">Specialty: <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
                         <p class="fs-5 mt-1 mb-0">Doctor: <span class="text-dark fw-bold">{{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</span></p>
@@ -96,7 +96,7 @@
                     <div class="col card shadow-sm p-3 d-flex ">
                         <div class="d-flex justify-content-between">
                             <p class="text-muted m-0">Status: <span class="text-warning fw-bold">{{ appointment.get_status_display }}</span></p>
-                            <p class="text-secondary m-0">Made: <span class="text-dark fw-bold">{{ appointment.requested_date }}</span></p>
+                            <p class="text-secondary m-0">Made: <span class="text-dark fw-bold">{{ appointment.requested_date|date:"d-m-Y H:i" }}</span></p>
                         </div>
                         <p class="fs-5 mt-1 mb-0">Specialty: <span class="fw-semibold" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
                         <p class="fs-5 mt-1 mb-0">Doctor: <span class="text-dark fw-bold">{{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</span></p>
@@ -171,12 +171,12 @@
                     <div class="col card shadow-sm p-3 d-flex ">
                         <div class="d-flex justify-content-between">
                             <p class="text-muted m-0">Status: <span class="text-secondary fw-bold">{{ appointment.get_status_display }}</span></p>
-                            <p class="text-secondary m-0">Made: <span class="text-secondary fw-bold">{{ appointment.requested_date }}</span></p>
+                            <p class="text-secondary m-0">Made: <span class="text-secondary fw-bold">{{ appointment.requested_date|date:"d-m-Y H:i" }}</span></p>
                         </div>
                         <p class="fs-5 mt-1 mb-0  text-secondary">Specialty: <span class=" text-secondary" style="color: rgb(62, 113, 223);">{{ appointment.doctor.specialty }}</span></p>
                         <p class="fs-5 mt-1 mb-0  text-secondary">Doctor: <span class="text-secondary fw-bold">{{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }}</span></p>
                         <div class="d-flex justify-content-end p-2 mt-1">
-                            <button class="btn btn-dark px-5" data-bs-toggle="modal" data-bs-target="#deleteModal{{ appointment.id }}">Detele</button>
+                            <button class="btn btn-secondary px-5" data-bs-toggle="modal" data-bs-target="#deleteModal{{ appointment.id }}">Detele</button>
                         </div>
                     </div>
                 </div>
@@ -207,8 +207,11 @@
             {% endfor %}
             </div>
         </div>
+        {% else %}
+        <p class="text-secondary">You have no rejected or canceled appointments.</p>
         {% endif %}
     </div>
+    <hr>
 
     {% if doctors %}
     <div class="doc-container container mt-5">
