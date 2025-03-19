@@ -50,6 +50,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>Are you sure you want to cancel this appointment?</p>
+                                    <p>If you change your mind, you will need to submit a new appointment request.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" name="action" value="cancel" class="btn btn-danger">Cancel</button>
@@ -72,6 +73,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
+                                    <p>Updating your notes will require your appointment to be <strong>reconfirmed</strong>.</p>
                                     <label for="notes">Notes:</label>
                                     <textarea name="notes" class="form-control">{{ appointment.notes }}</textarea>
                                 </div>
@@ -129,6 +131,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>Are you sure you want to cancel this appointment?</p>
+                                    <p>If you change your mind, you will need to submit a new appointment request.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit" name="action" value="cancel" class="btn btn-danger">Cancel</button>
@@ -151,6 +154,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                                 </div>
                                 <div class="modal-body">
+                                    <p>Edit appointment notes.</p>
                                     <label for="notes">Notes:</label>
                                     <textarea name="notes" class="form-control">{{ appointment.notes }}</textarea>
                                 </div>
