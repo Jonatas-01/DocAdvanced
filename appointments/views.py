@@ -9,20 +9,21 @@ from .forms import AppointmentRequestForm
 @login_required
 def appointments_patient_view(request):
     """
-    Handles the view for patient appointments.
-    This view performs the following actions:
-    - Checks if the user has the 'patient' role. If not, redirects to the home page with an error message.
-    - Retrieves the patient's details based on the logged-in user.
-    - Fetches the patient's appointments categorized by their status: pending, confirmed, rejected, or canceled.
-    - Retrieves all doctor details.
-    - Handles POST requests to perform actions on appointments:
-        - Cancel an appointment.
-        - Edit an appointment's notes and set its status to pending.
-        - Delete an appointment.
+    Handle patient's appointment management operations.
+    This view allows patients to manage their appointments including viewing, canceling, 
+    editing and deleting appointments. It displays appointments categorized by their status
+    (pending, confirmed, rejected/canceled).
     Args:
-        request (HttpRequest): The HTTP request object.
+        request: HttpRequest object containing metadata about the request
     Returns:
-        HttpResponse: The rendered HTML page for patient appointments.
+        HttpResponse: Rendered template with appointments data or redirect response
+        after appointment actions
+    Raises:
+        Http404: If requested appointment or patient details are not found
+    Notes:
+        - Only accessible to users with 'patient' role
+        - Supports POST actions for: cancel, edit, and delete appointments
+        - Provides list of all available doctors
     """
 
     if request.user.role != 'patient':
@@ -59,7 +60,8 @@ def appointments_patient_view(request):
                 appointment.status = "pending"
                 appointment.save()
                 messages.success(
-                    request, f"Your appointment with Dr. {appointment.doctor.first_name} {appointment.doctor.last_name} has been updated.")
+                    request, 
+                    f"Your appointment with Dr. {appointment.doctor.first_name} has been updated.")
         elif action == 'delete':
             appointment.delete()
             messages.error(request, "Appointment has been deleted.")
@@ -76,7 +78,26 @@ def appointments_patient_view(request):
 @login_required
 def appointments_doctor_view(request):
     """
-
+    Handle doctor's appointment view and actions.
+    This view function manages a doctor's appointments, including viewing pending,
+    confirmed, and rejected/canceled appointments. It also handles various appointment
+    actions like confirmation, rejection, editing, cancellation, and deletion.
+    Args:
+        request: HttpRequest object containing metadata about the request
+    Returns:
+        HttpResponse: Renders the doctor's appointment view template with appointment lists
+        or redirects to appropriate pages after actions
+    Raises:
+        Http404: If the doctor details are not found for the logged-in user
+    Access Control:
+        - Only accessible to users with 'doctor' role
+        - Redirects to home page if unauthorized user attempts access
+    Actions Supported:
+        - confirm: Confirms appointment with scheduled date
+        - reject: Rejects the appointment
+        - edit: Modifies appointment scheduled date
+        - cancel: Cancels the appointment
+        - delete: Removes the appointment from system
     """
 
     if request.user.role != 'doctor':
@@ -106,7 +127,8 @@ def appointments_doctor_view(request):
                 appointment.scheduled_date = scheduled_date
                 appointment.save()
                 messages.success(
-                    request, f"Appointment confirmed for {appointment.scheduled_date} with {appointment.patient.first_name} {appointment.patient.last_name}.")
+                    request, f'Appointment confirmed for {appointment.scheduled_date}'
+                    f'with {appointment.patient.first_name} {appointment.patient.last_name}.')
                 return redirect('appointments')
             else:
                 messages.error(
@@ -122,7 +144,8 @@ def appointments_doctor_view(request):
                 appointment.scheduled_date = scheduled_date
                 appointment.save()
                 messages.success(
-                    request, f"Your appointment with {appointment.patient.first_name} {appointment.patient.last_name} has been reschedule.")
+                    request, 
+                    f"Your appointment with {appointment.patient.first_name} has been reschedule.")
                 return redirect('appointments')
             else:
                 messages.error(
@@ -131,12 +154,14 @@ def appointments_doctor_view(request):
             appointment.status = 'canceled'
             appointment.save()
             messages.warning(
-                request, f"Your appointment with Dr. {appointment.patient.first_name} {appointment.patient.last_name} has been canceled.")
+                request,
+                f"Your appointment with Dr. {appointment.patient.first_name} has been canceled.")
             return redirect('appointments')
         elif action == 'delete':
             appointment.delete()
             messages.error(
-                request, f"Your appointment with Dr. {appointment.patient.first_name} {appointment.patient.last_name} has been deleted.")
+                request,
+                f"Your appointment with Dr. {appointment.patient.first_name} has been deleted.")
             return redirect('appointments')
 
     return render(request, "doctor/appointment_doctor_view.html", {
@@ -149,7 +174,21 @@ def appointments_doctor_view(request):
 @login_required
 def appointments_view(request):
     """
-
+    Handle appointment views based on user role and authorization.
+    This view function determines which appointment view to display based on the user's role
+    (patient or doctor) and checks if the user has completed their personal details.
+    Args:
+        request: HttpRequest object containing metadata about the request
+    Returns:
+        HttpResponse: Redirects to:
+            - patient/doctor appointment view if authorized and role matches
+            - patient/doctor form if personal details are incomplete
+            - home page if role is invalid
+    Raises:
+        No explicit exceptions are raised
+    Note:
+        - Users must have completed their personal details before accessing appointments
+        - Only authenticated users with valid roles (patient/doctor) can access appointments
     """
 
     if not DoctorDetails.objects.filter(user=request.user).exists() and not PatientDetails.objects.filter(user=request.user).exists():
@@ -168,18 +207,21 @@ def appointments_view(request):
 @login_required
 def request_appointment(request, doctor_id):
     """
-    Handles the appointment request process for patients.
-    This view function performs the following tasks:
-    1. Checks if the user is a patient. If not, an error message is displayed and the user is redirected.
-    2. Verifies if the patient's personal details are filled out. If not, an error message is displayed and the user is redirected.
-    3. Retrieves the doctor and patient details based on the provided doctor_id and the logged-in user.
-    4. If the request method is POST, it processes the appointment request form. If the form is valid, the appointment is saved and a success message is displayed.
-    5. If the request method is not POST, it initializes the appointment request form with the doctor's details.
+    Handle appointment requests from patients to doctors.
+    This view function processes appointment requests, ensuring that:
+    1. Only authenticated patients can request appointments
+    2. Patients have completed their personal details
+    3. The requested doctor exists
     Args:
-        request (HttpRequest): The HTTP request object.
-        doctor_id (int): The ID of the doctor for whom the appointment is being requested.
+        request: The HTTP request object
+        doctor_id (int): The ID of the doctor to request an appointment with
     Returns:
-        HttpResponse: The rendered template with the appointment request form or a redirect response.
+        HttpResponse: Renders the appointment request form or redirects after submission
+            - If successful: Redirects to appointments page with success message
+            - If unauthorized: Redirects with error message
+            - If GET: Renders request_appointment.html with form
+    Raises:
+        Http404: If the doctor or patient details are not found
     """
 
     if request.user.role != 'patient':
