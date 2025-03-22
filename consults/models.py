@@ -1,9 +1,9 @@
 from django.db import models
-from appointments.models import PatientDetails, DoctorDetails
+from appointments.models import Appointment
 
 class Consult(models.Model):
-    patient = models.ForeignKey(PatientDetails, on_delete=models.CASCADE, related_name='consults_patient')
-    doctor = models.ForeignKey(DoctorDetails, on_delete=models.SET_NULL, null=True, related_name='consults_doctor')
+    appointment = models.OneToOneField(Appointment, on_delete=models.CASCADE, related_name='consult')
+    
     # Intake section
     symptoms = models.TextField()
     allergies = models.TextField(blank=True, null=True)
