@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'core',
     'account',
     'appointments',
+    'consults',
 ]
 
 LOGIN_URL = '/login/'

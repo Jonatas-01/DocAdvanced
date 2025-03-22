@@ -6,6 +6,7 @@
 {% url 'login' as login %}
 {% url 'account-details' as account_view %}
 {% url 'appointments' as appointments_view %}
+{% url 'consults' as consults_view %}
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -51,6 +52,10 @@
                     <li class="nav-item">
                         <a class="nav-link fs-6 {% if request.path == appointments_view %}active{% endif %}" aria-current="page"
                             href="{% url 'appointments' %}">Appointments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-6 {% if request.path == consults_view %}active{% endif %}" aria-current="page"
+                            href="{% url 'consults' %}">Consults</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 {% if request.path == account_view %}active{% endif %}"
