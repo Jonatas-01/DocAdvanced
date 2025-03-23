@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% url 'edit-consult' edit_consult %}
+
+{% block content %}
+<div class="container pb-5">
+    <div class="my-3">
+        <h1 class="fw-bold main-title">Your Consults</h1>
+    </div>
+    {% if consults %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        {% for consult in consults %}
+        <div class="col">
+            <div class="col card card-body">
+                {% if request.user.role == 'patient' %}
+                <h4 class="text-primary">{{ consult.appointment.doctor.specialty }}</h4>
+                <h5><span class="text-secondary">Doctor:</span> {{ consult.appointment.doctor.first_name }} {{ consult.appointment.doctor.last_name }}</h5>
+                {% else %}
+                <h5><span class="text-secondary">Patient:</span> {{ consult.appointment.patient.first_name }} {{ consult.appointment.patient.last_name }}</h5>
+                {% endif %}
+                <h5><span class="text-secondary">Date:</span> {{ consult.created_at|date:"d-m-Y H:i" }}</h5>
+                <h5><span class="text-secondary">Diagnosis:</span> {{ consult.diagnosis }}</h5>
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#detailsModal{{ consult.id }}">See Details</button>
+            </div>
+        </div>
+
+        <!-- Detail Modal -->
+        <div class="modal fade" id="detailsModal{{ consult.id }}" tabindex="-1" aria-labelledby="detailsModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title fw-bold">Consult Details</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="">
+                            <div class="row row-cols-1 row-cols-md-2">
+                                <div class="col">
+                                    <p class="text-secondary my-0">Doctor</p>
+                                    <p class="fs-5 details-info text-capitalize">{{ consult.appointment.doctor.first_name }} {{ consult.appointment.doctor.last_name }}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-secondary my-0">Specialty</p>
+                                    <p class="fs-5 details-info text-capitalize" style="min-height: 74px;">{{ consult.appointment.doctor.specialty }}</p>
+                                </div>
+                            </div>
+                            <hr class="mt-2">
+
+                            <h4>Intake Form</h4>
+                            <div class="row row-cols-1 row-cols-md-2">
+                                <div class="col">
+                                    <p class="text-secondary my-0">Symptoms</p>
+                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.symptoms }}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-secondary my-0">Allergies</p>
+                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.allergies }}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-secondary my-0">Current Medications</p>
+                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.medications }}</p>
+                                </div>
+                            </div>
+                            <hr class="mt-2">
+
+                            <h4>Consult Result</h4>
+                            <div class="row row-cols-1 row-cols-md-2">
+                                <div class="col">
+                                    <p class="text-secondary my-0">Diagnosis</p>
+                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.diagnosis }}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-secondary my-0">Prescription</p>
+                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.prescription }}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="text-secondary my-0">Additional Notes</p>
+                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.notes }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        {% if request.user.role == 'doctor' %}
+                        <a class="btn btn-primary" href="{% url 'edit-consult' consult.id %}">Edit Details</a>
+                        {% endif %}
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ consult.id }}">Delete Consult</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete modal -->
+        <div class="modal fade" id="deleteModal{{ consult.id }}" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="consult_id" value="{{ consult.id }}">
+                        <div class="modal-header">
+                            <h4 class="modal-title fw-bold">Delete Consult</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete the consult 
+                                with {{ consult.appointment.patient.first_name }} {{ consult.appointment.patient.last_name }}?</p>
+                            <p class="fw-bold">THIS ACTION IS IRREVERSIBLE!</p> 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-danger">Confirm</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>You have no consults yet</p>
+    {% endif %}
+</div>
+{% endblock %}

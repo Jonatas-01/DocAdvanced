@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="my-3">
+        <h1 class="fw-bold main-title">Edit Consult Details</h1>
+    </div>
+    <div class="form-box mb-4">
+        <h4>Intake Form</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col">
+                    <label class="form-label">Symptoms</label>
+                    <textarea class="form-control fs-5" name="symptoms">{{ consult.symptoms }}</textarea>
+                </div>
+                <div class="col">
+                    <label class="form-label">Allergies</label>
+                    <textarea class="form-control fs-5" name="allergies">{{ consult.allergies }}</textarea>
+                </div>
+                <div class="col">
+                    <label class="form-label">Current Medications</label>
+                    <textarea class="form-control fs-5" name="medications">{{ consult.medications }}</textarea>
+                </div>
+            </div>
+
+            <h4 class="mt-3">Consult Result</h4>
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col">
+                    <label class="form-label">Diagnosis</label>
+                    <textarea class="form-control fs-5" name="diagnosis">{{ consult.diagnosis }}</textarea>
+                </div>
+                <div class="col">
+                    <label class="form-label">Prescription</label>
+                    <textarea class="form-control fs-5" name="prescription">{{ consult.prescription }}</textarea>
+                </div>
+                <div class="col">
+                    <label class="form-label">Additional Notes</label>
+                    <textarea class="form-control fs-5" name="notes">{{ consult.notes }}</textarea>
+                </div>
+            </div>
+            <div class="mt-5 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

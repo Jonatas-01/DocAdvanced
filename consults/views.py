@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from appointments.models import Appointment
+from account.models import DoctorDetails, PatientDetails
 from .models import Consult
 
 
@@ -68,7 +69,51 @@ def start_consult(request, appointment_id):
 
 
 @login_required
+def edit_consult(request, consult_id):
+    """
+    """
+    if request.user.role != 'doctor':
+        messages.error(request, "Only doctor has access to this page.")
+        return redirect('consults')
+    
+    consult = get_object_or_404(Consult, id=consult_id)
+
+    if request.method == 'POST':
+        consult.symptoms = request.POST.get('symptoms')
+        consult.allergies = request.POST.get('allergies')
+        consult.medications = request.POST.get('medications')
+        consult.diagnosis = request.POST.get('diagnosis')
+        consult.prescription = request.POST.get('prescription')
+        consult.notes = request.POST.get('notes')
+        consult.save()
+
+        messages.success(request, "Consult updated successfully.")
+        return redirect('consults')
+    
+    return render(request, 'consults/edit_consult.html', {'consult': consult})
+        
+
+
+@login_required
 def consults_view(request):
     """
     """
-    return render(request, 'consults_view.html')
+
+    consults = None
+
+    if request.user.role == 'doctor':
+        doctor = get_object_or_404(DoctorDetails, user=request.user)
+        consults = Consult.objects.filter(appointment__doctor=doctor)
+
+    elif request.user.role == 'patient':
+        patient = get_object_or_404(PatientDetails, user=request.user)
+        consults = Consult.objects.filter(appointment__patient=patient)
+
+    if request.method == 'POST':
+        consult_id = request.POST.get('consult_id')
+        consult = get_object_or_404(Consult, id=consult_id)
+        consult.delete()
+        messages.error(request, "Your consult has been deleted.")
+        return redirect('consults')
+
+    return render(request, 'consults/consults_view.html', {'consults': consults})
