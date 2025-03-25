@@ -1,14 +1,119 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 
-<h3>{{ user.username }} : {{ user.role }}</h3>
-{% if user.is_authenticated %}
-    {% if user.role == 'doctor' %}
-    <h2>thanks for saving lifes</h2>
-    {% else %}
-    <h2>go drink water</h2>
-    {% endif %}
-{% endif %}
+<div class="">
+    <!-- Header -->
+    <div class="container-fluid header-home px-0 px-md-5 pb-3 d-flex justify-content-center">
+        <div class="container row row-cols-1 row-cols-md-2 px-0">
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center mt-3 px-0">
+                <div class=" text-center text-md-start">
+                    <h1 class="header-title">Smart Healthcare Scheduling</h1>
+                    <p class="fs-5">Schedule appointments with top healthcare professionals. Quick, easy, and convenient
+                        booking
+                        system for better healthcare management</p>
+                    <a class="btn btn-primary me-2" href="{% url 'appointments' %}"><i
+                            class="fa-solid fa-calendar-plus"></i> Book Appointment</a>
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-outline-primary" href="{% url 'account-details' %}"><i
+                            class="fa-solid fa-user"></i> Account</a>
+                    {% else %}
+                    <a class="btn btn-outline-primary" href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 d-flex djustify-content-center align-items-center mt-2 mt-md-0">
+                <img id="hospital-img" class="hospital-image img-fluid p-2 p-md-3"
+                    src="{% static 'images/72631546_9802356.jpg' %}" alt="hospital-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Smart Features -->
+    <div class="bg-white py-5">
+        <h2 class="text-center mb-4 semibold">Smart Features</h2>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4">
+                <div class="col">
+                    <div class="border-cards bg-light p-4 h-100">
+                        <p class="fs-5 mb-2 semibold"><i class="fa-solid fa-calendar-check text-primary"></i> Real Time
+                            Scheduling</p>
+                        <p class="m-0">Instant appointment booking and confirmation system.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="border-cards bg-light p-4 h-100">
+                        <p class="fs-5 mb-2 semibold"><i class="fa-solid fa-clock text-primary"></i> Flexible Timing</p>
+                        <p class="m-0">Doctors can set their availability and manage schedules.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="border-cards bg-light p-4 h-100">
+                        <p class="fs-5 mb-2 semibold"><i class="fa-solid fa-file-zipper text-primary"></i> Transparency
+                        </p>
+                        <p class="m-0">Your consults and reports is register on the website to check any time you want.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How it works -->
+    <div class="bg-light py-5">
+        <h2 class="text-center mb-4 semibold">How It Works</h2>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col">
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <div class="circle bg-primary d-flex justify-content-center align-items-center">
+                            <i class="fa-solid fa-user-plus text-white"></i>
+                        </div>
+                        <p class="fs-5 mb-0 semibold">Create Account</p>
+                        <p class="text-center">Register as a patient or doctor</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <div class="circle bg-primary d-flex justify-content-center align-items-center">
+                            <i class="fa-solid fa-user-doctor text-white"></i>
+                        </div>
+                        <p class="fs-5 mb-0 semibold">Choose Specialist</p>
+                        <p class="text-center">Select one of ours qualified doctors</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <div class="circle bg-primary d-flex justify-content-center align-items-center">
+                            <i class="fa-solid fa-calendar-check text-white"></i>
+                        </div>
+                        <p class="fs-5 mb-0 semibold">Request Appointment</p>
+                        <p class="text-center">Request a consult with of one our specialist</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="d-flex justify-content-center align-items-center flex-column">
+                        <div class="circle bg-primary d-flex justify-content-center align-items-center">
+                            <i class="fa-solid fa-calendar-check text-white"></i>
+                        </div>
+                        <p class="fs-5 mb-0 semibold">Confirm Appointments</p>
+                        <p class="text-center">Get confirmation in maximum 1 day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ready to start? -->
+    <div class="bg-primary py-5">
+        <h2 class="text-center mb-4 semibold text-white">Ready to Start?</h2>
+        <div class="container d-flex justify-content-center">
+            <a class="btn btn-light text-primary mx-2" href="{% url 'appointments' %}">Book as Patient</a>
+            <a class="btn btn-outline-light" href="{% url 'register' %}">Join Us as Doctor</a>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
