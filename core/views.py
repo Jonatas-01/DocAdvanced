@@ -17,6 +17,9 @@ def registration(request):
     Ensures the user will be registred only if the form is submited and
     it pass the validation
     """
+    if request.user.is_authenticated:
+        return redirect('home')
+    
     if request.method == "POST":
         form = ProfileCreationForm(request.POST)
         if form.is_valid():
@@ -53,6 +56,9 @@ def login_view(request):
     Ensures the user log in only if the form is submited and pass the
     validation.
     """
+    if request.user.is_authenticated:
+        return redirect('home')
+    
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
