@@ -6,16 +6,30 @@ from .forms import ProfileCreationForm
 
 def my_home(request):
     """
-    Render the home page
+    Render the home page of the application.
+    This view function handles the home page request and returns
+    the rendered index.html template.
+    Args:
+        request: HttpRequest object containing metadata about the request
+    Returns:
+        HttpResponse: The rendered index.html template
     """
     return render(request, "index.html")
 
 
 def registration(request):
     """
-    Render the registration page
-    Ensures the user will be registred only if the form is submited and
-    it pass the validation
+    Handle user registration process.
+    This view function manages the registration of new users. It checks if the user
+    is already authenticated, processes the registration form submission, and redirects
+    users based on their role after successful registration.
+    Args:
+        request: HttpRequest object containing metadata about the request.
+    Returns:
+        HttpResponse: Redirects to appropriate page based on user role and authentication status.
+                     - If user is authenticated: redirects to 'home'
+                     - If registration successful: redirects to 'patient-form' or 'doctor-form' based on role
+                     - If GET request: renders registration form
     """
     if request.user.is_authenticated:
         return redirect('home')
@@ -41,8 +55,13 @@ def registration(request):
 
 def logout_view(request):
     """
-    Render a log out page
-    Ensures the user will log out only if the form is submited
+    Handle user logout functionality.
+    This view processes the logout request and redirects to the login page.
+    Args:
+        request: HttpRequest object containing metadata about the request
+    Returns:
+        HttpResponse: Redirects to login page on POST request
+        HttpResponse: Renders logout confirmation template on GET request
     """
     if request.method == "POST":
         logout(request)
@@ -52,9 +71,19 @@ def logout_view(request):
 
 def login_view(request):
     """
-    Render the login page
-    Ensures the user log in only if the form is submited and pass the
-    validation.
+    Handle user authentication and login process.
+    This view function manages the login process for users. If the user is already
+    authenticated, they are redirected to the home page. For POST requests, it
+    attempts to authenticate the user with provided credentials and logs them in
+    if successful. Otherwise, it displays an error message.
+    Args:
+        request: The HTTP request object containing user data and session information.
+    Returns:
+        HttpResponseRedirect: Redirects to 'home' if login is successful or user is
+            already authenticated.
+        HttpResponse: Renders login template if authentication fails or on GET request.
+    Raises:
+        None
     """
     if request.user.is_authenticated:
         return redirect('home')
