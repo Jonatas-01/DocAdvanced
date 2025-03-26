@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .forms import ProfileCreationForm
 
@@ -33,19 +34,19 @@ def registration(request):
     """
     if request.user.is_authenticated:
         return redirect('home')
-    
+
     if request.method == "POST":
         form = ProfileCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
-            login(request, user) # log the user in
+            login(request, user)  # log the user in
 
             if user.role == 'patient':
                 return redirect("patient-form")
             elif user.role == 'doctor':
                 return redirect("doctor-form")
-            
+
             # add message confirmation
             return redirect("home")
     else:
@@ -53,6 +54,7 @@ def registration(request):
     return render(request, "authentication/register.html", {"form": form})
 
 
+@login_required
 def logout_view(request):
     """
     Handle user logout functionality.
@@ -87,7 +89,7 @@ def login_view(request):
     """
     if request.user.is_authenticated:
         return redirect('home')
-    
+
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]

@@ -2,32 +2,56 @@
 {% load static %}
 
 {% block content %}
-<div class="container py-4">
-    <div class="form-box row justify-content-center align-items-center mx-3 form-box">
-        <div class="col-sm-12 col-md-6 login-box">
-            <h2 class="text-center">Welcome back!</h2>
-            <p class="text-center text-secondary">Welcome back! Please enter your details.</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <!-- Header -->
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-circle fa-3x text-primary mb-3"></i>
+                        <h2 class="fw-bold">Welcome Back!</h2>
+                        <p class="text-muted">Please enter your credentials to continue</p>
+                    </div>
 
-            <form method="POST">
-                <div class="mb-3">
-                    {% csrf_token %}
-                    <label class="form-label fs-4" for="username">Username:</label>
-                    <input class="form-control col-8 fs-5" type="text" name="username" placeholder="Username" required>
-                </div>
+                    <!-- Login Form -->
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label class="form-label" for="username">
+                                <i class="fas fa-user text-primary me-2"></i>Username
+                            </label>
+                            <input class="form-control form-control-lg" type="text" name="username" id="username"
+                                placeholder="Enter your username" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" for="password">
+                                <i class="fas fa-lock text-primary me-2"></i>Password
+                            </label>
+                            <div class="input-group">
+                                <input class="form-control form-control-lg" type="password" name="password"
+                                    id="password" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-sign-in-alt me-2"></i>Log In
+                            </button>
+                        </div>
+                    </form>
 
-                <div class="mb-3">
-                    <label class="form-label fs-4" for="password">Password:</label>
-                    <input class="form-control fs-5" type="password" name="password" placeholder="Password" required>
+                    <div class="text-center mt-4">
+                        <p class="text-muted mb-0">
+                            Don't have an account?
+                            <a href="{% url 'register' %}" class="text-primary text-decoration-none fw-bold">
+                                Create Account
+                            </a>
+                        </p>
+                    </div>
                 </div>
-                <div class="justify-content-center">
-                    <button id="login-btn" type="submit" class="btn btn-primary fs-5 my-3">Log In</button>
-                </div>
-            </form>
-
-            <p class="text-center text-secondary">Don't have an account yet? <a id="login-link"
-                    href="{% url 'register' %}">Create an
-                    Account</a></p>
+            </div>
         </div>
     </div>
 </div>
+
 {% endblock %}

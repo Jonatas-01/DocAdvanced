@@ -1,22 +1,30 @@
 {% extends "base.html" %}
 
-
 {% block content %}
-<div class="container py-4">
-    <div class="form-box row justify-content-center align-items-center mx-2">
-        <div class="col-sm-12 col-md-6 login-box">
-            <h2 class="text-center">Are you sure you want to log out?</h2>
-
-            <div class="row justify-content-center">
-                <form action="{% url 'logout' %}" method="post" class="col-6">
-                    {% csrf_token %}
-                    {% if user.is_authenticated %}
-                    <div class="d-flex justify-content-around gap-3">
-                        <button class="btn btn-danger fs-5 my-3 px-4" type="submit">Yes</button>
-                        <a href="{% url 'home' %}" class="btn btn-success fs-5 my-3">Cancel</a>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-sign-out-alt fa-3x text-danger mb-3"></i>
+                        <h2 class="fw-bold">Logging Out?</h2>
+                        <p class="text-muted">Are you sure you want to end your session?</p>
                     </div>
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-center">
+                            <button type="submit" class="btn btn-danger btn-lg px-4">
+                                <i class="fas fa-sign-out-alt me-2"></i>Log Out
+                            </button>
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-lg px-4">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </form>
                     {% endif %}
-                </form>
+                </div>
             </div>
         </div>
     </div>
