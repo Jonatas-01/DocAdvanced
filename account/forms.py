@@ -5,13 +5,15 @@ from .models import PatientDetails, DoctorDetails
 class PatientlDetailsForm(forms.ModelForm):
     class Meta:
         model = PatientDetails
-        fields = ('first_name', 'last_name', 'age', 'gender', 'contact_info')
+        fields = ('first_name', 'last_name', 'age', 'gender', 'contact_info', 'medical_history', 'allergies')
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your first name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your last name'}),
             'age': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter your age'}),
             'gender': forms.Select(attrs={'class': 'form-select'}),
             'contact_info': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email address'}),
+            'medical_history': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your medical history', 'rows': 2}),
+            'allergies': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'List any allergies', 'rows': 2}),
         }
 
 

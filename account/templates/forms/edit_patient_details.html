@@ -1,22 +1,70 @@
 {% extends "base.html" %}
-
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container py-4">
-    <div class="form-box row justify-content-center align-items-center mx-2">
-        <div class="col-sm-12 col-md-6 login-box">
-            <h2 class="text-center">Edit Personal Details</h2>
-            <p class="text-center text-secondary">Please fill out your personal details to help us provide you with the
-                best care possible. All fields are required for accurate record-keeping.</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <!-- Header Section -->
+                    <div class="text-center mb-4">
+                        <h2 class="main-title mb-3">Edit Your Profile</h2>
+                        <p class="text-muted">
+                            Update your personal information to help us provide better healthcare services.
+                            Your information is kept confidential and secure.
+                        </p>
+                    </div>
 
-            <form method="POST" class="form">
-                {% csrf_token %}
-                {{ form | crispy }}
-                <div class="justify-content-center">
-                    <button id="login-btn" type="submit" class="btn btn-primary fs-5 my-3">Edit</button>
+                    <!-- Form Section -->
+                    <form method="POST" class="form">
+                        {% csrf_token %}
+                        
+                        <!-- Personal Information Section -->
+                        <div class="mb-4">
+                            <h5 class="text-primary mb-3">Personal Information</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form.first_name|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.last_name|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {{ form.age|as_crispy_field }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form.gender|as_crispy_field }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    {{ form.contact_info|as_crispy_field }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medical Information Section -->
+                        <div class="mb-4">
+                            <h5 class="text-primary mb-3">Medical Information</h5>
+                            {{ form.medical_history|as_crispy_field }}
+                            {{ form.allergies|as_crispy_field }}
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <a href="{% url 'account-details' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Back
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save me-2"></i>Save Changes
+                            </button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

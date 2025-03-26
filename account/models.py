@@ -13,6 +13,8 @@ class PatientDetails(models.Model):
     age = models.PositiveIntegerField()
     gender = models.CharField(max_length=6, choices=GENDER_CHOICES)
     contact_info = models.EmailField(max_length=150)
+    medical_history = models.TextField(blank=True, null=True)
+    allergies = models.TextField(blank=True, null=True)
 
     class Meta:
         verbose_name = "Patient Detail"
