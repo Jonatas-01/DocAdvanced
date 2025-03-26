@@ -27,7 +27,7 @@ def patient_details_form(request):
             patient_details = form.save(commit=False)
             patient_details.user = request.user
             patient_details.save()
-            return redirect('home')
+            return redirect('account-details')
     else:
         form = PatientlDetailsForm()
 
@@ -56,7 +56,7 @@ def doctor_details_form(request):
             doctor_details = form.save(commit=False)
             doctor_details.user = request.user
             doctor_details.save()
-            return redirect('home')
+            return redirect('account-details')
     else:
         form = DoctorDetailsForm()
 

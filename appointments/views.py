@@ -191,17 +191,20 @@ def appointments_view(request):
         - Only authenticated users with valid roles (patient/doctor) can access appointments
     """
 
-    if not DoctorDetails.objects.filter(user=request.user).exists() and not PatientDetails.objects.filter(user=request.user).exists():
-        messages.error(
-            request, "Unauthorized access. Please fill out your Personal Details Form first.")
-        return redirect('patient-form' if request.user.role == 'patient' else 'doctor-form')
-
-    if request.user.role == 'patient':
-        return appointments_patient_view(request)
-    elif request.user.role == 'doctor':
-        return appointments_doctor_view(request)
-
-    return redirect('home')
+    if request.user.role == 'doctor':
+        if not DoctorDetails.objects.filter(user=request.user).exists():
+            messages.error(request, 'Please complete your doctor profile first.')
+            return redirect('doctor-form')
+        else:
+            return appointments_doctor_view(request)
+    elif request.user.role == 'patient':
+        if not PatientDetails.objects.filter(user=request.user).exists():
+            messages.error(request, 'Please complete your patient profile first.')
+            return redirect('patient-form')
+        else:
+            return appointments_patient_view(request)
+    else:
+        return redirect('home')
 
 
 @login_required

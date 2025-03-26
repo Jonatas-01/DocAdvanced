@@ -98,16 +98,16 @@ def edit_consult(request, consult_id):
 def consults_view(request):
     """
     """
-
     consults = None
 
     if request.user.role == 'doctor':
-        doctor = get_object_or_404(DoctorDetails, user=request.user)
-        consults = Consult.objects.filter(appointment__doctor=doctor)
-
+        if not DoctorDetails.objects.filter(user=request.user).exists():
+            messages.error(request, 'Please complete your doctor profile first.')
+            return redirect('doctor-form')
     elif request.user.role == 'patient':
-        patient = get_object_or_404(PatientDetails, user=request.user)
-        consults = Consult.objects.filter(appointment__patient=patient)
+        if not PatientDetails.objects.filter(user=request.user).exists():
+            messages.error(request, 'Please complete your patient profile first.')
+            return redirect('patient-form')
 
     if request.method == 'POST':
         consult_id = request.POST.get('consult_id')
