@@ -40,7 +40,12 @@ main {
 }
 
 #footer {
-    background-color: rgb(3, 29, 85);
+    background-color: rgb(18, 19, 20);
+}
+
+.footer-p {
+    color: #858585;
+    text-decoration: none;
 }
 
 .active {
@@ -337,4 +342,26 @@ textarea.form-control {
 
 textarea.form-control {
     min-height: 120px;
+}
+
+/* Error Pages */
+.error-page {
+    padding: 40px 0;
+}
+
+.error-page h1 {
+    font-size: 8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.error-page h2 {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.error-page .lead {
+    color: #666;
+    margin-bottom: 30px;
 }

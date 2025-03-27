@@ -16,6 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404, handler403, handler500
+from .errors import custom_404_view, custom_403_view, custom_500_view
+
+handler404 = custom_404_view
+handler403 = custom_403_view
+handler500 = custom_500_view
 
 urlpatterns = [
     path('', include('core.urls'), name="core"),
