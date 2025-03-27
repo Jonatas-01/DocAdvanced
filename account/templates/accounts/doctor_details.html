@@ -19,7 +19,7 @@
     <div class="row">
         <!-- Left Column - Personal Info -->
         <div class="col-md-4 mb-4">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm h-100">
                 <div class="card-body">
                     <div class="text-center mb-4">
                         <div class="avatar-placeholder mb-3">
@@ -51,8 +51,8 @@
         </div>
 
         <!-- Right Column - Professional Info -->
-        <div class="col-md-8">
-            <div class="card shadow-sm">
+        <div class="col-md-8 mb-4">
+            <div class="card shadow-sm h-100">
                 <div class="card-body">
                     <h5 class="text-primary mb-4">Professional Information</h5>
                     <div class="mb-4">
@@ -62,6 +62,27 @@
                     <div class="mb-4">
                         <h6 class="fw-bold">About</h6>
                         <p class="text-justify">{{ details.about }}</p>
+                    </div>
+                    <div class="mb-4">
+                        <h6 class="fw-bold">Working Hours</h6>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-muted">Monday - Friday</td>
+                                        <td>9:00 AM - 5:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Saturday</td>
+                                        <td>10:00 AM - 2:00 PM</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-muted">Sunday</td>
+                                        <td>Closed</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
