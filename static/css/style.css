@@ -40,7 +40,12 @@ main {
 }
 
 #footer {
-    background-color: rgb(3, 29, 85);
+    background-color: rgb(18, 19, 20);
+}
+
+.footer-p {
+    color: #858585;
+    text-decoration: none;
 }
 
 .active {

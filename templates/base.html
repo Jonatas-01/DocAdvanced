@@ -35,8 +35,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-2 py-0 border border-light-subtle">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold fs-3" href="{% url 'home' %}">
-                <img src="{% static 'images/favicon.png' %}" alt="brand-icon" width="30" height="24" class="m-1 mb-2">Doc<span
-                    class="text-primary">Advanced</span></a>
+                <img src="{% static 'images/favicon.png' %}" alt="brand-icon" width="30" height="24"
+                    class="m-1 mb-2">Doc<span class="text-primary">Advanced</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -49,12 +49,12 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link fs-6 {% if request.path == appointments_view %}active{% endif %}" aria-current="page"
-                            href="{% url 'appointments' %}">Appointments</a>
+                        <a class="nav-link fs-6 {% if request.path == appointments_view %}active{% endif %}"
+                            aria-current="page" href="{% url 'appointments' %}">Appointments</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 {% if request.path == consults_view %}active{% endif %}" aria-current="page"
-                            href="{% url 'consults' %}">Consults</a>
+                        <a class="nav-link fs-6 {% if request.path == consults_view %}active{% endif %}"
+                            aria-current="page" href="{% url 'consults' %}">Consults</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 {% if request.path == account_view %}active{% endif %}"
@@ -103,12 +103,46 @@
 
     <!-- Footer -->
     <footer id="footer" class="footer mt-auto py-2">
-        <p class="m-1 text-center text-white">Designed and Built by Jonatas Mendes</p>
-        <p class="m-0 text-center text-white">Follow Me:
-            <i class="fab fa-github-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-        </p>
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 my-4 text-center text-md-start">
+                <div class="col mb-3 mb-md-2 mb-lg-0">
+                    <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                        <img src="{% static 'images/favicon.png' %}" alt="brand-icon" width="30" height="24"
+                            class="m-1 mb-2">
+                        <h6 class="text-white fw-bold">Doc<span class="text-primary">Advanced</span></h6>
+                    </div>
+                    <p class="footer-p">Providing quality healthcare services for you and your family.</p>
+                </div>
+                <div class="col mb-3 mb-md-2">
+                    <div class="d-flex flex-column align-items-center align-items-md-start">
+                        <h6 class="text-white fw-bold mb-3">Quick Links</h6>
+                        <a class="footer-p" href="{% url 'home' %}">Home</a>
+                        <a class="footer-p" href="{% url 'appointments' %}">Appointments</a>
+                        <a class="footer-p" href="{% url 'consults' %}">Consults</a>
+                        <a class="footer-p" href="{% url 'account-details' %}">Account</a>
+                    </div>
+                </div>
+                <div class="col mb-3 mb-md-2">
+                    <div class="d-flex flex-column align-items-center align-items-md-start">
+                        <h6 class="text-white fw-bold mb-3">Contact Info</h6>
+                        <p class="footer-p"><i class="fa-solid fa-location-dot text-primary"></i> 123 High Street, City</p>
+                        <p class="footer-p"><i class="fa-solid fa-phone text-primary"></i> +1 234 567 890</p>
+                        <p class="footer-p"><i class="fa-solid fa-envelope text-primary"></i> contact@docadvanced.com</p>
+                    </div>
+                </div>
+                <div class="col mb-3 mb-md-2">
+                    <div class="d-flex flex-column align-items-center align-items-md-start">
+                        <h6 class="text-white fw-bold mb-3">Follow Us</h6>
+                        <div class="d-flex gap-3">
+                            <a class="footer-p" href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                            <a class="footer-p" href="https://x.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                            <a class="footer-p" href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                            <a class="footer-p" href="https://www.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="https://kit.fontawesome.com/16816afa88.js" crossorigin="anonymous"></script>
