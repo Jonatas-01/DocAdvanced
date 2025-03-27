@@ -36,7 +36,7 @@
         <div class="container-fluid">
             <a class="navbar-brand fw-bold fs-3" href="{% url 'home' %}">
                 <img src="{% static 'images/favicon.png' %}" alt="brand-icon" width="30" height="24" class="m-1 mb-2">Doc<span
-                    style="color: rgb(85, 129, 224);">Advanced</span></a>
+                    class="text-primary">Advanced</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -86,7 +86,7 @@
     </nav>
 
     <!-- Display Django messages -->
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-8 offset-md-2 mt-2">
         {% for message in messages %}
         <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
             {{ message | safe }}
