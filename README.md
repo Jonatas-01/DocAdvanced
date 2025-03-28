@@ -28,7 +28,8 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [3.3.2. Wireframes](#332-wireframes)
         - [3.3.3. Fonts](#333-fonts)
         - [3.3.4. Icons and Images](#334-images-and-icons)
-- []()
+- [4. Features](#4-features)
+    - [4.1. Base HTML](#41-base-html)
 
 # 3. User Experience
 
@@ -151,3 +152,43 @@ As the developer, I focused on maintaining a consistent and legible design that 
 **Images**: One image is used throughout the website, placed on the Landing Page. The image was sourced from [Freepik](https://www.freepik.com/free-vector/hospital-waiting-room-concept-illustration_72631546.htm#fromView=search&page=6&position=15&uuid=19fa2f01-421e-46aa-9279-7097377ddcaa&query=hospital) and is intended to give context and meaning to the platform by visually representing its purpose (healthcare and consultation).
 
 **Icons** were sourced from [Font Awesome](https://fontawesome.com/) and are used throughout the website to enhance visual communication. They help users quickly identify actions and links (e.g., social media, navigation), improving overall usability and design appeal.
+
+# 4. Features
+## 4.1. Base HTML
+To ensure the navigation bar and footer appear on every page, a reusable template named `base.html` was created. This file is located inside the `templates` folder.
+
+The `base.html` template includes:
+- A consistent navbar
+- A footer
+- Template blocks to load dynamic content
+- Links to CSS files and other static resources
+
+**Navigation Bar**
+The navigation bar is placed at the top of every page and includes:
+- Logo and brand name
+- Links to important pages such as Home, Account, Login, and Register
+- If the user is not logged in:
+    - Links to Register and Login are displayed
+    ![Navbar logged out](/docs/website-features/nav-bar.png)
+- If the user is logged in:
+    - Links to Account and Log Out are shown, adjusted based on the user’s role
+    ![Navbar logged in](/docs/website-features/nav-bar-logged.png)
+- Responsive mobile version
+
+![Navbar Mobile](/docs/website-features/nav-bar-mobile.png)
+
+**Footer**
+Footer is placed at the bottom of every page and has:
+- Logo and Brand name followed by context paragraph
+- Quick links section to all pages
+- Contact Information
+    - Address
+    - Phone
+    - Email
+- Social media section with link to Facebook, Instagram, X and LinkedIn
+
+![Footer Desktop](/docs/website-features/footer-desktop.png)
+
+Mobile Footer
+
+![Footer Mobile](/docs/website-features/footer-mobile.png)
