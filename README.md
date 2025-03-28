@@ -72,3 +72,18 @@ After defining the development and organization strategy, the project scope was 
 - Appointment Management: Doctors can confirm appointments by selecting a date and time. Both doctors and patients can cancel or delete appointments at any time before the consultation begins.
 - Consultation Handling: Once an appointment is confirmed, the doctor can start the consultation. During the consult, the doctor fills out a form that includes patient intake notes, diagnosis, and a prescription if necessary.
 - Consultation Records: After a consultation is completed, both doctors and patients can view the consult details. These records are displayed on the Consults page, ensuring transparency and easy access to medical history.
+
+## 3.3. Structure Plane
+
+### 3.3.1 Database Scheme
+Bellow you can see the actual database sctructure, made in [Lucid Flowchart](https://lucid.app/) platform website.
+![Database Schema](/docs/structure-plane/Database%20ER%20diagram%20(crow's%20foot).png)
+
+### 3.3.2 Wireframes
+The wireframes were made to organize the design toughts. Plataform used was [Mockflow](https://app.mockflow.com/).
+
+- **Navbar and Footer**: The **Navbar** and **Footer** are displayed on every page of the website to ensure consistent navigation and user experience.
+    - The **Navbar** is located at the top of the page. It allows users to easily access the main sections of the site, such as Home, Account, Login, and Register, depending on their authentication status. It adjusts dynamically based on whether the user is logged in and their role (doctor or patient).
+    - The **Footer** is placed at the bottom of each page. It provides basic information about the website, such as credits to the developer and links to social media platforms.
+![Navbar and Footer](/docs/wireframes/nav-footer.png)
+
