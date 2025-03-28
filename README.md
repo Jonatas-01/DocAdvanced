@@ -37,6 +37,8 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [4.3.3. Account Form](#433-account-form)
         - [4.3.4. Account Page](#434-account-page)
         - [4.3.5. Appointments](#435-appointments)
+        - [4.3.6. Book Appointment](#436-book-appointments)
+        - [4.3.7. Consults](#437-consults)
 
 # 3. User Experience
 
@@ -323,15 +325,17 @@ Doctors can:
 
 ![Doctor Details](/docs/website-features/doctor-account-page.png)
 
+This page ensures that users always have access to their own data and can keep it up to date as needed.
+
 ### 4.3.5. Appointments
-The appointment system allows patients to request consultations with doctors and enables doctors to manage those requests. It is a central part of the platform’s functionality, offering different features depending on the user role.
+**The appointment** system allows patients to request consultations with doctors and enables doctors to manage those requests. It is a central part of the platform’s functionality, offering different features depending on the user role.
 **App**: `appointment`
 
 **Patients can:**
-- Request an Appointment:
+- **Request an Appointment:**
     - Choose a doctor from the list.
     - Add optional notes to describe symptoms or reasons for the consultation.
-- Manage Appointments:
+- **Manage Appointments:**
     - View all appointment statuses (Pending, Confirmed, Rejected, Canceled).
     - Edit, cancel, or delete an appointment before it begins.
     - View confirmed appointments with the scheduled date set by the doctor.
@@ -341,10 +345,11 @@ The appointment system allows patients to request consultations with doctors and
 ![Patient Appointment2](/docs/website-features/patient-appointment-part2.png)
 
 **Doctors can:**
-- View Requests:
+- **View Requests:**
     - See all incoming appointment requests from patients.
-- Manage Appointments:
+- **Manage Appointments:**
     - Confirm an appointment by selecting a consultation date and time.
+    - Start the comfirmed appointments.
     - Reject an appointment if unavailable.
     - Edit a scheduled date if changes are needed.
     - Cancel or delete appointments when appropriate.
@@ -352,3 +357,65 @@ The appointment system allows patients to request consultations with doctors and
 
 ![Doctor Appointment](/docs/website-features/doctor-appointments.png)
 
+### 4.3.6. Book Appointments
+The **Book Appointments** feature allows **patients** to explore a list of available doctors and request a consultation with just a few clicks. It’s designed to make the process fast, simple, and user-friendly.
+**App**: `appointments`
+
+**Patients can:**
+- **Browse Available Doctors:**
+    - View doctor cards that include name, gender, specialty, contact info, and a short bio.
+- **Request an Appointment:**
+    - Click the "Book Appointment" button on a selected doctor.
+    - Fill out a short form with optional notes describing symptoms or reasons for the visit.
+    - Submit the form to send the request to the doctor.
+- **View Booking Status:**
+    - After submission, the appointment status appears as “Pending” until the doctor responds.
+
+**Doctors can:**
+- **View Appointment Requests:**
+    - See a list of all incoming appointment requests from patients.
+- **Respond to Requests:**
+    - Confirm the appointment by selecting a date and time.
+    - Reject the request if unavailable or inappropriate.
+- Template File: /form/request_appointment.html - extends `base.html`
+
+![Book Appointments](/docs/website-features/book-appointments.png)
+
+This feature connects patients and doctors smoothly, ensuring the appointment workflow begins with ease and clarity.
+
+### 4.3.7. Consults
+The **Consults** feature handles everything related to medical consultations after an appointment has been confirmed. It enables **doctors** to record details of the consultation and allows **patients** to view and manage their consultation history
+**App**: `consult`
+
+**Doctor Consult Features** 
+Doctors can:
+
+- **Start a Consultation:**
+    - Available once an appointment is confirmed and scheduled.
+    - Access a consultation form linked to the specific patient and appointment.
+- **Fill Out Consultation Details:**
+    - Patient Intake Notes: Information about the patient’s condition or symptoms.
+    - Diagnosis: The doctor’s medical conclusion.
+    - Prescription: Medications or treatment plans suggested for the patient.
+- **Edit Consultation:**
+    - Modify any of the consultation fields after submission, if needed.
+- Template File: /consults/start_consult.html - extends `base.html`
+
+![Doctor Consult Form](/docs/website-features/doctor-consult-form.png)
+
+![Doctor Consult Page](/docs/website-features/doctor-consult-page.png)
+
+**Patient Consult Features** 
+Patients can:
+
+- **View Consult Records:**
+    - Access completed consultations from the Consults Page.
+    - See details filled out by the doctor, including notes, diagnosis, and prescriptions.
+- **Delete Consults:**
+    - Remove consultation records from their view if they choose to.
+
+![Patient Consult Page](/docs/website-features/patient-consult-page.png)
+
+![Patient Consult View](/docs/website-features/patient-consult-view.png)
+
+The **Consults Page** creates a reliable space to **track medical history**, ensuring that both patients and doctors have access to important health records even after the consultation is complete.
