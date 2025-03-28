@@ -13,15 +13,21 @@ The platform is designed for teenagers and adults who want a fast and simple way
 
 # 2. Table of Contents
 
-- [1. Project Information]()
-- [2. Table of Contents]()
-- [3. User Experience]()
-    - [3.1. Startegy Plane]()
-        - [3.1.1. The Ideal]()
-        - [3.1.2. Site Goal]()
-        - [3.1.3. Epics]()
-        - [3.1.4. User Stories]()
-    - []()
+- [1. Project Information](#1-project-information)
+- [2. Table of Contents](#2-table-of-contents)
+- [3. User Experience](#3-user-experience)
+    - [3.1. Startegy Plane](#31-startegy-plane)
+        - [3.1.1. The Ideal](#311-the-ideal)
+        - [3.1.2. Site Goal](#312-site-goal)
+        - [3.1.3. Epics](#313-epics)
+        - [3.1.4. User Stories](#314-user-stories)
+    - [3.2. Scope Plan](#32-scope-plane)
+        - [3.2.1. Features to Implement](#321-features-to-implement)
+    - [3.3. Structure Plan](#33-structure-plane)
+        - [3.3.1. Database Scheme](#331-database-scheme)
+        - [3.3.2. Wireframes](#332-wireframes)
+        - [3.3.3. Fonts](#333-fonts)
+        - [3.3.4. Icons and Images](#334-images-and-icons)
 - []()
 
 # 3. User Experience
@@ -65,7 +71,7 @@ You can view all the User Stories and their details on the [**Kanban board**](h
 ## 3.2. Scope Plane
 After defining the development and organization strategy, the project scope was created.
 
-### 3.2.1. Features Implemented
+### 3.2.1. Features to Implement
 - User Authentication: Users can register as either a doctor or a patient, and have the ability to log in and log out securely.
 - Personal/Professional Details: After registration, users can fill out a form with their personal details. If the user is a doctor, they also complete a section with their professional information (such as specialty and a brief bio).
 - Request Appointments: Patients can request appointments with available doctors. During the request, they can also include notes describing their symptoms or the reason for the consultation.
@@ -75,11 +81,11 @@ After defining the development and organization strategy, the project scope was 
 
 ## 3.3. Structure Plane
 
-### 3.3.1 Database Scheme
+### 3.3.1. Database Scheme
 Bellow you can see the actual database sctructure, made in [Lucid Flowchart](https://lucid.app/) platform website.
 ![Database Schema](/docs/structure-plane/Database%20ER%20diagram%20(crow's%20foot).png)
 
-### 3.3.2 Wireframes
+### 3.3.2. Wireframes
 The wireframes were made to organize the design toughts. Plataform used was [Mockflow](https://app.mockflow.com/).
 
 - **Navbar and Footer**: The **Navbar** and **Footer** are displayed on every page of the website to ensure consistent navigation and user experience.
