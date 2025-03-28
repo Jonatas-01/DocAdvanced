@@ -30,6 +30,7 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [3.3.4. Icons and Images](#334-images-and-icons)
 - [4. Features](#4-features)
     - [4.1. Base HTML](#41-base-html)
+    - [4.2.Error Pages](#42-error-pages)
 
 # 3. User Experience
 
@@ -127,6 +128,7 @@ It provides different functionalities based on the user role:
     - Start consult.
 
 ![Doctor Appointment Page](/docs/wireframes/doctor-appointment-page.png)
+---
 
 - **Consults Page:** The **Consults Page** displays completed consultations recorded by doctors.
     - **For Patients**
@@ -169,10 +171,14 @@ The navigation bar is placed at the top of every page and includes:
 - Links to important pages such as Home, Account, Login, and Register
 - If the user is not logged in:
     - Links to Register and Login are displayed
-    ![Navbar logged out](/docs/website-features/nav-bar.png)
+
+![Navbar logged out](/docs/website-features/nav-bar.png)
+
 - If the user is logged in:
     - Links to Account and Log Out are shown, adjusted based on the user’s role
-    ![Navbar logged in](/docs/website-features/nav-bar-logged.png)
+
+![Navbar logged in](/docs/website-features/nav-bar-logged.png)
+
 - Responsive mobile version
 
 ![Navbar Mobile](/docs/website-features/nav-bar-mobile.png)
@@ -192,3 +198,24 @@ Footer is placed at the bottom of every page and has:
 Mobile Footer
 
 ![Footer Mobile](/docs/website-features/footer-mobile.png)
+
+## 4.2. Error Pages
+Customised error pages was created to give user a better undestanding of what is happening and give option to go back to website page with one click. Was created pages for 403, 404 and 500 error.
+
+- 403 - Received when user attempts to access a web resource for which they lack the necessary permissions.
+- 404 - Encountered when the requested web resource by user is not found on the server.
+- 500 - Displayed when the web server encounters an internal error while processing the request.
+
+403 Page
+
+![403 Page](/docs/website-features/403-error.png)
+
+404 Page
+
+![404 Page](/docs/website-features/404-error.png)
+
+500 Page
+
+![500 Page](/docs/website-features/500-error.png)
+
+
