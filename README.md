@@ -30,7 +30,11 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [3.3.4. Icons and Images](#334-images-and-icons)
 - [4. Features](#4-features)
     - [4.1. Base HTML](#41-base-html)
-    - [4.2.Error Pages](#42-error-pages)
+    - [4.2. Error Pages](#42-error-pages)
+    - [4.3. Main Content](#43-main-content)
+        - [4.3.1 Landing Page](#431-landing-page)
+        - [4.3.2 Authentication and Authorisation](#432-authentication-and-authorisation)
+        - [4.3.3 Account Form](#433-account-form)
 
 # 3. User Experience
 
@@ -200,22 +204,52 @@ Mobile Footer
 ![Footer Mobile](/docs/website-features/footer-mobile.png)
 
 ## 4.2. Error Pages
-Customised error pages was created to give user a better undestanding of what is happening and give option to go back to website page with one click. Was created pages for 403, 404 and 500 error.
+**Custom error pages** were created to give users a **better understanding** of what went wrong and to provide a quick way to return to the website. Each error page includes a clear message and a button that allows the user to go back to the home page with a single click.
 
-- 403 - Received when user attempts to access a web resource for which they lack the necessary permissions.
-- 404 - Encountered when the requested web resource by user is not found on the server.
-- 500 - Displayed when the web server encounters an internal error while processing the request.
+- **403** - Received when user attempts to access a web resource for which they lack the necessary permissions.
+- **404** - Encountered when the requested web resource by user is not found on the server.
+- **500** - Displayed when the web server encounters an internal error while processing the request.
 
-403 Page
+**403 Page**
 
 ![403 Page](/docs/website-features/403-error.png)
 
-404 Page
+**404 Page**
 
 ![404 Page](/docs/website-features/404-error.png)
 
-500 Page
+**500 Page**
 
 ![500 Page](/docs/website-features/500-error.png)
 
+## 4.3. Main Content
+### 4.3.1. Landing Page
+**The Landing Page** was built to welcome new users, introduce the company, explain how to use the platform, and encourage visitors to register. Its main purpose is to provide a clear and friendly starting point for anyone visiting the website for the first time.
+
+The landing page includes the following sections:
+- **Header:** Provides a brief introduction to the platform, includes an image, and contains buttons to book an appointment or access the account page.
+- **Smart Features:** Highlights the key features and benefits of using the service, helping users understand why the platform is valuable.
+- **How It Works:** Explains step-by-step how users (patients and doctors) can use the website, from registration to booking and managing appointments.
+- **Ready to start?** A call-to-action section that encourages new users to register and begin using the platform
+
+![Landing Page](/docs/website-features/landing-page.png)
+
+### 4.3.2. Authentication and Authorisation
+The **authentication system** was implemented to allow users to **register**, **log in**, and **log out** of the website securely.
+
+After successful registration and login, users are **authorized** to access the platform’s features based on their role (patient or doctor). This ensures that only verified users can interact with the appointment and consultation system.
+
+**Registration Page**
+
+![Registration](/docs/website-features/registration.png)
+
+**Login Page**
+
+![Login Page](/docs/website-features/login.png)
+
+**Log out Page**
+
+![Log out](/docs/website-features/logout.png)
+
+### 4.3.3. Account Form
 
