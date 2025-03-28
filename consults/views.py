@@ -71,11 +71,26 @@ def start_consult(request, appointment_id):
 @login_required
 def edit_consult(request, consult_id):
     """
+    Edit an existing consultation record.
+    This view function allows doctors to modify the details of an existing consultation.
+    Only users with the 'doctor' role can access this functionality.
+    Args:
+        request: The HTTP request object.
+        consult_id (int): The ID of the consultation to edit.
+    Returns:
+        HttpResponse: Renders the edit consultation form on GET requests.
+        HttpResponseRedirect: Redirects to consults list page after successful update on POST requests.
+    Raises:
+        Http404: If the consultation with given ID does not exist.
+    Notes:
+        - Checks if user has doctor role before allowing access
+        - Updates the following fields: symptoms, allergies, medications, diagnosis, prescription, notes
+        - Shows success message after successful update
     """
     if request.user.role != 'doctor':
         messages.error(request, "Only doctor has access to this page.")
         return redirect('consults')
-    
+
     consult = get_object_or_404(Consult, id=consult_id)
 
     if request.method == 'POST':
@@ -89,29 +104,47 @@ def edit_consult(request, consult_id):
 
         messages.success(request, "Consult updated successfully.")
         return redirect('consults')
-    
+
     return render(request, 'consults/edit_consult.html', {'consult': consult})
-        
 
 
 @login_required
 def consults_view(request):
     """
+    View function for handling consult-related operations.
+    This view handles both GET and POST requests for consults. For GET requests, it displays
+    consults based on the user's role (doctor or patient). For POST requests, it handles
+    consult deletion.
+    Args:
+        request: HttpRequest object containing metadata about the request
+    Returns:
+        HttpResponse: Renders consults_view.html template with consults data
+        HttpResponseRedirect: Redirects to appropriate form if profile is incomplete
+                             or to consults page after deletion
+    Raises:
+        Http404: If the requested consult for deletion doesn't exist
+    Notes:
+        - For doctors: shows consults related to their appointments
+        - For patients: shows consults related to their appointments
+        - Requires user authentication and completed profile
+        - Orders consults by creation date (newest first)
     """
     consults = None
 
     if request.user.role == 'doctor':
         if not DoctorDetails.objects.filter(user=request.user).exists():
-            messages.error(request, 'Please complete your doctor profile first.')
+            messages.error(
+                request, 'Please complete your doctor profile first.')
             return redirect('doctor-form')
-        else :
+        else:
             doctor = DoctorDetails.objects.get(user=request.user)
             consults = Consult.objects.filter(
                 appointment__doctor=doctor
             ).order_by('-created_at')
     elif request.user.role == 'patient':
         if not PatientDetails.objects.filter(user=request.user).exists():
-            messages.error(request, 'Please complete your patient profile first.')
+            messages.error(
+                request, 'Please complete your patient profile first.')
             return redirect('patient-form')
         else:
             patient = PatientDetails.objects.get(user=request.user)
