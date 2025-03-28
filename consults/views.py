@@ -104,10 +104,20 @@ def consults_view(request):
         if not DoctorDetails.objects.filter(user=request.user).exists():
             messages.error(request, 'Please complete your doctor profile first.')
             return redirect('doctor-form')
+        else :
+            doctor = DoctorDetails.objects.get(user=request.user)
+            consults = Consult.objects.filter(
+                appointment__doctor=doctor
+            ).order_by('-created_at')
     elif request.user.role == 'patient':
         if not PatientDetails.objects.filter(user=request.user).exists():
             messages.error(request, 'Please complete your patient profile first.')
             return redirect('patient-form')
+        else:
+            patient = PatientDetails.objects.get(user=request.user)
+            consults = Consult.objects.filter(
+                appointment__patient=patient
+            ).order_by('-created_at')
 
     if request.method == 'POST':
         consult_id = request.POST.get('consult_id')
