@@ -32,9 +32,10 @@ The platform is designed for teenagers and adults who want a fast and simple way
     - [4.1. Base HTML](#41-base-html)
     - [4.2. Error Pages](#42-error-pages)
     - [4.3. Main Content](#43-main-content)
-        - [4.3.1 Landing Page](#431-landing-page)
-        - [4.3.2 Authentication and Authorisation](#432-authentication-and-authorisation)
-        - [4.3.3 Account Form](#433-account-form)
+        - [4.3.1. Landing Page](#431-landing-page)
+        - [4.3.2. Authentication and Authorisation](#432-authentication-and-authorisation)
+        - [4.3.3. Account Form](#433-account-form)
+        - [4.3.4. Account Page](#434-account-page)
 
 # 3. User Experience
 
@@ -238,18 +239,85 @@ The landing page includes the following sections:
 The **authentication system** was implemented to allow users to **register**, **log in**, and **log out** of the website securely.
 
 After successful registration and login, users are **authorized** to access the platform’s features based on their role (patient or doctor). This ensures that only verified users can interact with the appointment and consultation system.
+- App: `core`
 
 **Registration Page**
+- Template File : /authentication/register.html - extends `base.html`
 
 ![Registration](/docs/website-features/registration.png)
 
 **Login Page**
+- Template File: /authentication/login.html - extends `base.html`
 
 ![Login Page](/docs/website-features/login.png)
 
 **Log out Page**
+- Template File: /authentication/logout.html - extends `base.html`
 
 ![Log out](/docs/website-features/logout.png)
 
 ### 4.3.3. Account Form
+After a user successfully registers, they are immediately redirected to fill out their account form. Completing this form is mandatory in order to gain full access to the platform’s services. The form content varies depending on the user's role (patient or doctor).
+- App: `account`
 
+**Patient Account Form** 
+The patient form collects basic personal and medical information
+- Contains personal fields:
+    - First name
+    - Last name
+    - Gender
+    - Age
+    - Contact Information
+- Medical Information:
+    - Current Medication
+    - Allergies
+- Template File: /forms/patient_form.html - extends `base.html`
+
+![Patient Account Form](/docs/website-features/patient-account-form.png)
+
+**Doctor Account Form** 
+The doctor form includes personal and professional details:
+- Contains personal fields:
+    - First name
+    - Last name
+    - Gender
+    - Contact Information
+- Professional Detials:
+    - Specialty
+    - About (a short bio or description of their professional background)
+- Template File: /forms/doctor_form.html - extends `base.html`
+
+![Doctor Account Form](/docs/website-features/doctor-account-form.png)
+
+### 4.3.4. Account Page
+The Account Page allows users to view and manage their personal or professional details. Page displays different information for patients and doctors.
+
+**Patient Account Page** 
+Patients can:
+- View Personal Details:
+    - First Name
+    - Last Name
+    - Gender
+    - Age
+    - Contact Information
+    - (Optional) Medical details like current medication and allergies
+- Edit Information:
+    - Update personal or medical details at any time through the "Edit" form.
+- Template File: /accounts/patient_details.html - extends `base.html`
+
+![Patient Details](/docs/website-features/patient-account-page.png)
+
+**Doctor Account Page** 
+Doctors can:
+- View Personal and Professional Details:
+    - First Name
+    - Last Name
+    - Gender
+    - Contact Information
+    - Specialty
+    - About (short bio)
+- Edit Information:
+    - Update both personal and professional details using the edit form.
+- Template File: /accounts/doctor_details.html - extends `base.html`
+
+![Doctor Details](/docs/website-features/doctor-account-page.png)
