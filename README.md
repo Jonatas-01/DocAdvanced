@@ -84,6 +84,50 @@ The wireframes were made to organize the design toughts. Plataform used was [Moc
 
 - **Navbar and Footer**: The **Navbar** and **Footer** are displayed on every page of the website to ensure consistent navigation and user experience.
     - The **Navbar** is located at the top of the page. It allows users to easily access the main sections of the site, such as Home, Account, Login, and Register, depending on their authentication status. It adjusts dynamically based on whether the user is logged in and their role (doctor or patient).
-    - The **Footer** is placed at the bottom of each page. It provides basic information about the website, such as credits to the developer and links to social media platforms.
-![Navbar and Footer](/docs/wireframes/nav-footer.png)
+    - The **Footer** is placed at the bottom of each page. It provides basic information about the website, such as credits to the developer and links to social media platforms.   
 
+![Navbar and Footer](/docs/wireframes/nav-footer.png)
+---
+
+- **Landing Page**: The **Landing Page** is the homepage of the website and the first screen new users will see. It is designed to **welcome visitors**, **explain how the platform works**, and **encourage them to register**. The layout is clean and informative, giving users a quick overview of the site's purpose and how to get started.
+
+![Landing Page](/docs/wireframes/landing-page.png)
+---
+
+- **Account Page**: The **Account Page** displays the user's information based on their role:
+    - For patients, it shows their personal details.
+    - For doctors, it includes both personal and professional information (such as specialty and biography). 
+
+This page also provides an option for users to edit and update their information at any time.
+
+![Account Page](/docs/wireframes/account-page.png)
+---
+
+- **Appointment Page**: The **Appointment Page** displays all appointment-related information, including upcoming, pending, and cancelled/rejected appointments.
+
+It provides different functionalities based on the user role:
+- **For Patients:**
+    - View their appointments.
+    - Request a new appointment with a doctor.
+    - Edit, cancel, or delete existing appointments before the consultation begins.
+
+![Patient Appointment Page](/docs/wireframes/patient-appointment-page.png)
+
+- **For Doctors:**
+    - View incoming appointment requests.
+    - Confirm appointments by assigning a date and time.
+    - Reject, cancel, or delete appointments as needed.
+    - Start consult.
+
+![Doctor Appointment Page](/docs/wireframes/doctor-appointment-page.png)
+
+- **Consults Page:** The **Consults Page** displays completed consultations recorded by doctors.
+    - **For Patients**
+        - View their past consultations and the details filled in by the doctor.
+        - Delete consultation records from their view if needed.
+![Patient Consult Page](/docs/wireframes/patient-consults-page.png)
+
+    - **For Doctors**
+        - View all consultations they have conducted.
+        - Edit consultation details, including intake notes, diagnosis, and prescriptions.
+![Doctor Consult Page](/docs/wireframes/doctor-consults-page.png)
