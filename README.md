@@ -131,3 +131,17 @@ It provides different functionalities based on the user role:
         - View all consultations they have conducted.
         - Edit consultation details, including intake notes, diagnosis, and prescriptions.
 ![Doctor Consult Page](/docs/wireframes/doctor-consults-page.png)
+
+### 3.3.3. Fonts
+The **Google Fonts** platform was used to select typography that balances style and readability. Special attention was given to ensuring that all text is **clear**, **accessible**, and easy to read across different screen
+
+**Fonts used:**
+- **Quicksand:** Applied to most of the body text for its clean and modern appearance.
+- **Rubik:** Used for headings and titles to provide emphasis and visual hierarchy.
+
+As the developer, I focused on maintaining a consistent and legible design that enhances the overall user experience.
+
+### 3.3.4. Images and Icons
+**Images**: One image is used throughout the website, placed on the Landing Page. The image was sourced from [Freepik](https://www.freepik.com/free-vector/hospital-waiting-room-concept-illustration_72631546.htm#fromView=search&page=6&position=15&uuid=19fa2f01-421e-46aa-9279-7097377ddcaa&query=hospital) and is intended to give context and meaning to the platform by visually representing its purpose (healthcare and consultation).
+
+**Icons** were sourced from [Font Awesome](https://fontawesome.com/) and are used throughout the website to enhance visual communication. They help users quickly identify actions and links (e.g., social media, navigation), improving overall usability and design appeal.
