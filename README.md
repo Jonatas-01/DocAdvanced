@@ -39,6 +39,12 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [4.3.5. Appointments](#435-appointments)
         - [4.3.6. Book Appointment](#436-book-appointments)
         - [4.3.7. Consults](#437-consults)
+    - [4.4. Future Features](#44-future-features)
+- [5. Testing and Validation](#5-testing-and-validation)
+    - []()
+- [6. Deployment](#6-deployment)
+    - [6.1 Heroku Deployment](#61-heroky-deployment)
+- [7. Technologies and Credits]()
 
 # 3. User Experience
 
@@ -419,3 +425,51 @@ Patients can:
 ![Patient Consult View](/docs/website-features/patient-consult-view.png)
 
 The **Consults Page** creates a reliable space to **track medical history**, ensuring that both patients and doctors have access to important health records even after the consultation is complete.
+
+### 4.4. Future Features
+To continue improving the platform and enhancing the user experience, the following features are planned for future development:
+
+- **Email & SMS Notifications**:
+Automatically notify users about appointment confirmations, cancellations, and reminders.
+- **Calendar Integration**
+Sync confirmed appointments with Google Calendar or Outlook for easier time management.
+- **Admin Dashboard**
+A backend interface for administrators to manage users, appointments, and platform content.
+- **Medical History Archive**
+Enable long-term storage and filtering of past consults for easier access to patient records.
+- **Search & Filter for Doctors**
+Add search functionality and filters by specialty, gender, or availability.
+- **Rating & Feedback System**
+Allow patients to rate doctors and leave feedback after consultations.
+
+# 5. Testing and Validation
+
+# 6. Deployment
+## 6.1 Heroky Deployment
+**Objective:** Deploy the live version of the DocAdvanced platform so that users can interact with the application online.
+
+**Steps:**
+1. Create a Heroku Account
+    - Register or log in at heroku.com
+2. Create a New App
+    - Go to Dashboard > New > Create New App
+    - Choose a unique name for your application
+3. Configure Environment Variables
+    - Go to Settings > Reveal Config Vars
+    - Copy all key-value pairs from your local `env.py` file
+    - Add all required environment variables (e.g., `SECRET_KEY`, `DATABASE_URL`, etc.)
+    - Add `PORT` with the value `8000`
+    - For testing deployment, add `COLLECTSTATIC` with the value 1
+4. Update Django Settings
+    - Add your Heroku app domain to the `ALLOWED_HOSTS` list in `settings.py`
+5. Create a Procfile
+    - In the root directory of your project, create a file named `Procfile`
+    - This file should contain: `web: gunicorn <your_project_name>.wsgi`
+6. Connect to GitHub
+    - In the Deploy tab of your Heroku app, connect your GitHub repository
+7. Deploy Your Application
+    - Select the appropriate branch (usually `main` or `master`)
+    - Click Deploy Branch
+8. View Deployment Logs
+    - Monitor the logs to ensure the deployment was successful
+    - If everything works, you’ll be able to click "View" to open the live application
