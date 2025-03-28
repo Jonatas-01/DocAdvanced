@@ -36,6 +36,7 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [4.3.2. Authentication and Authorisation](#432-authentication-and-authorisation)
         - [4.3.3. Account Form](#433-account-form)
         - [4.3.4. Account Page](#434-account-page)
+        - [4.3.5. Appointments](#435-appointments)
 
 # 3. User Experience
 
@@ -321,3 +322,33 @@ Doctors can:
 - Template File: /accounts/doctor_details.html - extends `base.html`
 
 ![Doctor Details](/docs/website-features/doctor-account-page.png)
+
+### 4.3.5. Appointments
+The appointment system allows patients to request consultations with doctors and enables doctors to manage those requests. It is a central part of the platform’s functionality, offering different features depending on the user role.
+**App**: `appointment`
+
+**Patients can:**
+- Request an Appointment:
+    - Choose a doctor from the list.
+    - Add optional notes to describe symptoms or reasons for the consultation.
+- Manage Appointments:
+    - View all appointment statuses (Pending, Confirmed, Rejected, Canceled).
+    - Edit, cancel, or delete an appointment before it begins.
+    - View confirmed appointments with the scheduled date set by the doctor.
+- Template File: /patient/appointments_patient_view.html - extends `base.html`
+
+![Patient Appointment1](/docs/website-features/patient-appointment-part1.png)
+![Patient Appointment2](/docs/website-features/patient-appointment-part2.png)
+
+**Doctors can:**
+- View Requests:
+    - See all incoming appointment requests from patients.
+- Manage Appointments:
+    - Confirm an appointment by selecting a consultation date and time.
+    - Reject an appointment if unavailable.
+    - Edit a scheduled date if changes are needed.
+    - Cancel or delete appointments when appropriate.
+- Template File: /doctor/appointment_doctor_view.html - extends `base.html`
+
+![Doctor Appointment](/docs/website-features/doctor-appointments.png)
+
