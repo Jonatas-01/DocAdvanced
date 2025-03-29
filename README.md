@@ -464,6 +464,17 @@ Manual tests were run in two environments, locally by running python manage.py r
 All tests were **completed successfully**, and any bugs discovered during testing were **identified and fixed**.
 
 ## 5.2. Validation
+### 5.2.1. HTML Validation
+- To ensure source code generated from all `*.html` templates is compliant with [W3C standards](https://validator.w3.org/).
+- Method :
+    - Open each page of the project
+    - In Chrome : Right click on page background and select View Page Source
+    - Copy and Paste the generated code from browser to validator
+    - See results ( Appendix 54 )
+    - Please note this needs to be done for all states of the templates (i.e. Logged In / Logged Out, etc.)
+
+
+## 5.3. Bugs
 
 # 6. Deployment
 ## 6.1 Heroky Deployment
