@@ -53,7 +53,7 @@
                                 <p>Select the new date for this appointment?</p>
                                 <label for="scheduled_date">Select a date:</label>
                                 <input id="scheduled_date" type="datetime-local" name="scheduled_date" class="form-control"
-                                    value="{{ appointment.scheduled_date|date:" Y-m-d\TH:i" }}" required>
+                                    value="{{ appointment.scheduled_date|date:" d-m-Y\TH:i" }}" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" name="action" value="edit" class="btn btn-success">Edit</button>
