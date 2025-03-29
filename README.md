@@ -50,6 +50,7 @@ The platform is designed for teenagers and adults who want a fast and simple way
     - [5.3. Bugs](#53-bugs)
         - [5.3.1. Fixed Bugs](#531-fixed-bugs)
         - [5.3.2. Unfiex Bugs](#532-unfiex-bugs)
+    - [5.4. Accessibility](#54-accessibility)
 - [6. Deployment](#6-deployment)
     - [6.1 Heroku Deployment](#61-heroky-deployment)
 - [7. Technologies and Credits](#7-technologies-and-credits)
@@ -533,6 +534,30 @@ Aside from a few `messages` lines that exceed the standard character limit and a
 ### 5.3.2. Unfiex Bugs
 All known bugs identified during development and testing have been resolved.  
 **There are currently no unfixed bugs in the application.**
+
+## 5.4. Accessibility
+To ensure that the application is user-friendly and inclusive, an accessibility audit was performed using Lighthouse (Chrome DevTools).
+- **Tool Used**: [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)
+- **Mode**: Desktop & Mobile
+- **Metric**: Accessibility Score
+
+### Accessibility Highlights:
+- All relevant images include **alt text**
+- Forms use properly associated **label** elements
+- **Color contrast** meets WCAG 2.1 AA standards
+- Use of **semantic HTML elements** (`<header>`, `<main>`, `<footer>`, etc.)
+- Full support for **keyboard navigation**
+- **Focus indicators** are visible on interactive elements
+
+### Fixes & Adjustments:
+- Added missing `<label>` tags to form inputs
+- Improved button and link text for clarity
+- Adjusted focus states and tab order for better keyboard support
+
+Lighthouse Score:
+- **Accessibility**: ✅ 93%
+
+A screenshot of the Lighthouse report can be included here: [Lighthouse Accessibility Report](/docs/lighthouse/lighthouse.md)
 
 # 6. Deployment
 ## 6.1 Heroky Deployment
