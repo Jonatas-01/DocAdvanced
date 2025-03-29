@@ -43,6 +43,10 @@ The platform is designed for teenagers and adults who want a fast and simple way
 - [5. Testing and Validation](#5-testing-and-validation)
     - [5.1. Testing](#51-testing)
     - [5.2. Validation](#52-validation)
+        - [5.2.1. HTML Validation](#521-html-validation)
+        - [5.2.2. CSS Validation](#522-css-validation)
+        - [5.2.3. JavaScript Validation](#523-javascript-validation)
+        - [5.2.4. Python Validation](#524-python-validation)
 - [6. Deployment](#6-deployment)
     - [6.1 Heroku Deployment](#61-heroky-deployment)
 - [7. Technologies and Credits](#7-technologies-and-credits)
@@ -475,7 +479,7 @@ All tests were **completed successfully**, and any bugs discovered during testin
 
  Check the validaiton screenshots in [Validation HTML](/docs/validation/validation-html.md).
 
-### 5.2.3. CSS Validation
+### 5.2.2. CSS Validation
 To ensure the code in style.css is compliant with [W3C standards](https://jigsaw.w3.org/css-validator/).
 - **Method :**
     - Open the style.css file
@@ -486,7 +490,7 @@ To ensure the code in style.css is compliant with [W3C standards](https://jigsaw
 
 ![CSS Validation](/docs/validation/css/css-validation.png)
 
-### 5.2.4. JavaScript Validation
+### 5.2.3. JavaScript Validation
 To ensure JavaScript has no error the code in `*.js` are check in [JSHint](https://jshint.com/).
 - **Method :**
     - Open the `.js` files
@@ -496,6 +500,21 @@ To ensure JavaScript has no error the code in `*.js` are check in [JSHint](https
 `*.js` file pass the validation test with **NO ERRORS**.
 
 ![JS Validation](/docs/validation/js/js-validation.png)
+
+### 5.2.4. Python Validation
+We have used [CI Python Linter](https://pep8ci.herokuapp.com/) to check if the matches the PEP8 standards, also we add docstring following [PEP257](https://peps.python.org/pep-0257/) instructions.
+- **Method :**
+    - Open all `*.py` files from all apps
+    - Copy and Paste the code from IDE to validator
+    - See results
+
+The project was checked for **PEP8 compliance** using the **CI Python Linter**, focusing specifically on the `views.py` files across all apps. These files were selected because they contain logical blocks that can be safely adjusted to meet line-length and formatting rules.
+
+Other files, such as `models.py` and `forms.py`, were not linted in the same way due to long lines that are structurally difficult to break without reducing readability or introducing complexity. However, **PEP 257-compliant** docstrings were added to all Python files.
+
+Check the screenshot from CI Pyhton Linter [validation-python](/docs/validation/validation-python.md).
+
+Aside from a few `messages` lines that exceed the standard character limit and are not practical to break without reducing readability, the files successfully passed the **PEP8 validation** with **NO ERRORS**.
 
 ## 5.3. Bugs
 

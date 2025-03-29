@@ -10,14 +10,14 @@ from .forms import AppointmentRequestForm
 def appointments_patient_view(request):
     """
     Handle patient's appointment management operations.
-    This view allows patients to manage their appointments including viewing, canceling, 
-    editing and deleting appointments. It displays appointments categorized by their status
-    (pending, confirmed, rejected/canceled).
+    This view allows patients to manage their appointments including viewing,
+    canceling, editing and deleting appointments. It displays appointments
+    categorized by their status (pending, confirmed, rejected/canceled).
     Args:
         request: HttpRequest object containing metadata about the request
     Returns:
-        HttpResponse: Rendered template with appointments data or redirect response
-        after appointment actions
+        HttpResponse: Rendered template with appointments data or redirect
+        response after appointment actions
     Raises:
         Http404: If requested appointment or patient details are not found
     Notes:
@@ -60,7 +60,7 @@ def appointments_patient_view(request):
                 appointment.status = "pending"
                 appointment.save()
                 messages.success(
-                    request, 
+                    request,
                     f"Your appointment with Dr. {appointment.doctor.first_name} has been updated.")
         elif action == 'delete':
             appointment.delete()
@@ -79,14 +79,15 @@ def appointments_patient_view(request):
 def appointments_doctor_view(request):
     """
     Handle doctor's appointment view and actions.
-    This view function manages a doctor's appointments, including viewing pending,
-    confirmed, and rejected/canceled appointments. It also handles various appointment
-    actions like confirmation, rejection, editing, cancellation, and deletion.
+    This view function manages a doctor's appointments, including
+    viewing pending, confirmed, and rejected/canceled appointments.
+    It also handles various appointment actions like confirmation,
+    rejection, editing, cancellation, and deletion.
     Args:
         request: HttpRequest object containing metadata about the request
     Returns:
-        HttpResponse: Renders the doctor's appointment view template with appointment lists
-        or redirects to appropriate pages after actions
+        HttpResponse: Renders the doctor's appointment view template with
+        appointment lists or redirects to appropriate pages after actions
     Raises:
         Http404: If the doctor details are not found for the logged-in user
     Access Control:
@@ -144,7 +145,7 @@ def appointments_doctor_view(request):
                 appointment.scheduled_date = scheduled_date
                 appointment.save()
                 messages.success(
-                    request, 
+                    request,
                     f"Your appointment with {appointment.patient.first_name} has been reschedule.")
                 return redirect('appointments')
             else:
@@ -175,8 +176,9 @@ def appointments_doctor_view(request):
 def appointments_view(request):
     """
     Handle appointment views based on user role and authorization.
-    This view function determines which appointment view to display based on the user's role
-    (patient or doctor) and checks if the user has completed their personal details.
+    This view function determines which appointment view to display based
+    on the user's role (patient or doctor) and checks if the user has completed
+    their personal details.
     Args:
         request: HttpRequest object containing metadata about the request
     Returns:
@@ -187,19 +189,23 @@ def appointments_view(request):
     Raises:
         No explicit exceptions are raised
     Note:
-        - Users must have completed their personal details before accessing appointments
-        - Only authenticated users with valid roles (patient/doctor) can access appointments
+        - Users must have completed their personal details before
+        accessing appointments
+        - Only authenticated users with valid roles (patient/doctor) can
+        access appointments
     """
 
     if request.user.role == 'doctor':
         if not DoctorDetails.objects.filter(user=request.user).exists():
-            messages.error(request, 'Please complete your doctor profile first.')
+            messages.error(
+                request, 'Please complete your doctor profile first.')
             return redirect('doctor-form')
         else:
             return appointments_doctor_view(request)
     elif request.user.role == 'patient':
         if not PatientDetails.objects.filter(user=request.user).exists():
-            messages.error(request, 'Please complete your patient profile first.')
+            messages.error(
+                request, 'Please complete your patient profile first.')
             return redirect('patient-form')
         else:
             return appointments_patient_view(request)
@@ -219,7 +225,8 @@ def request_appointment(request, doctor_id):
         request: The HTTP request object
         doctor_id (int): The ID of the doctor to request an appointment with
     Returns:
-        HttpResponse: Renders the appointment request form or redirects after submission
+        HttpResponse: Renders the appointment request form or redirects
+        after submission
             - If successful: Redirects to appointments page with success message
             - If unauthorized: Redirects with error message
             - If GET: Renders request_appointment.html with form
