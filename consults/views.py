@@ -67,7 +67,10 @@ def start_consult(request, appointment_id):
         messages.success(request, "Consult has been created.")
         return redirect('consults')
 
-    return render(request, 'consults/start_consult.html', {'appointment': appointment})
+    return render(
+        request,
+        'consults/start_consult.html',
+        {'appointment': appointment})
 
 
 @login_required
@@ -117,9 +120,9 @@ def edit_consult(request, consult_id):
 def consults_view(request):
     """
     View function for handling consult-related operations.
-    This view handles both GET and POST requests for consults. For GET requests,
-    it displays consults based on the user's role (doctor or patient). For POST
-    requests, it handles consult deletion.
+    This view handles both GET and POST requests for consults. For GET
+    requests, it displays consults based on the user's role (doctor or patient)
+    For POST requests, it handles consult deletion.
     Args:
         request: HttpRequest object containing metadata about the request
     Returns:
@@ -164,4 +167,7 @@ def consults_view(request):
         messages.error(request, "Your consult has been deleted.")
         return redirect('consults')
 
-    return render(request, 'consults/consults_view.html', {'consults': consults})
+    return render(
+        request,
+        'consults/consults_view.html',
+        {'consults': consults})

@@ -4,6 +4,15 @@ from .models import Profile
 
 
 class ProfileCreationForm(UserCreationForm):
+    """
+    A form for creating new user profiles with role selection.
+    This form extends Django's UserCreationForm to include a role
+    field and custom styling.
+    It allows users to create a new profile by providing a username,
+    password, and selecting
+    a role from predefined choices.
+    """
+
     role = forms.ChoiceField(
         choices=Profile.ROLE_CHOICES,
         widget=forms.RadioSelect(attrs={'class': 'form-check-input'})

@@ -21,16 +21,20 @@ def my_home(request):
 def registration(request):
     """
     Handle user registration process.
-    This view function manages the registration of new users. It checks if the user
-    is already authenticated, processes the registration form submission, and redirects
-    users based on their role after successful registration.
+    This view function manages the registration of new users.
+    It checks if the user is already authenticated, processes the registration
+    form submission, and redirects users based on their role after
+    successful registration.
     Args:
         request: HttpRequest object containing metadata about the request.
     Returns:
-        HttpResponse: Redirects to appropriate page based on user role and authentication status.
-                     - If user is authenticated: redirects to 'home'
-                     - If registration successful: redirects to 'patient-form' or 'doctor-form' based on role
-                     - If GET request: renders registration form
+        HttpResponse:
+            Redirects to appropriate page based on user role and
+            authentication status.
+                - If user is authenticated: redirects to 'home'
+                - If registration successful: redirects to 'patient-form' or
+                'doctor-form' based on role
+                - If GET request: renders registration form
     """
     if request.user.is_authenticated:
         return redirect('home')
@@ -74,16 +78,19 @@ def logout_view(request):
 def login_view(request):
     """
     Handle user authentication and login process.
-    This view function manages the login process for users. If the user is already
-    authenticated, they are redirected to the home page. For POST requests, it
-    attempts to authenticate the user with provided credentials and logs them in
-    if successful. Otherwise, it displays an error message.
+    This view function manages the login process for users.
+    If the user is already authenticated, they are redirected to the home page.
+    For POST requests, it attempts to authenticate the user with provided
+    credentials and logs them in if successful. Otherwise, it displays an
+    error message.
     Args:
-        request: The HTTP request object containing user data and session information.
+        request: The HTTP request object containing user data and
+        session information.
     Returns:
-        HttpResponseRedirect: Redirects to 'home' if login is successful or user is
-            already authenticated.
-        HttpResponse: Renders login template if authentication fails or on GET request.
+        HttpResponseRedirect: Redirects to 'home' if login is successful
+            or user is already authenticated.
+        HttpResponse: Renders login template if authentication
+            fails or on GET request.
     Raises:
         None
     """

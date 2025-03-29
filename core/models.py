@@ -1,10 +1,14 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-# Create your models here.
-
 
 class Profile(AbstractUser):
+    """
+    A custom user profile model that extends Django's AbstractUser.
+    This model adds a role field to distinguish between patients and doctors 
+    in the system.
+    """
+
     ROLE_CHOICES = (
         ('patient', 'Patient'),
         ('doctor', 'Doctor'),
