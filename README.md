@@ -473,6 +473,8 @@ All tests were **completed successfully**, and any bugs discovered during testin
     - See results ( Appendix 54 )
     - Please note this needs to be done for all states of the templates (i.e. Logged In / Logged Out, etc.)
 
+    Landing page: ok
+
 
 ## 5.3. Bugs
 
