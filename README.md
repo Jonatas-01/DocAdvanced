@@ -41,7 +41,8 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [4.3.7. Consults](#437-consults)
     - [4.4. Future Features](#44-future-features)
 - [5. Testing and Validation](#5-testing-and-validation)
-    - []()
+    - [5.1. Testing](#51-testing)
+    - [5.2. Validation](#52-validation)
 - [6. Deployment](#6-deployment)
     - [6.1 Heroku Deployment](#61-heroky-deployment)
 - [7. Technologies and Credits](#7-technologies-and-credits)
@@ -445,6 +446,24 @@ Add search functionality and filters by specialty, gender, or availability.
 Allow patients to rate doctors and leave feedback after consultations.
 
 # 5. Testing and Validation
+## 5.1. Testing
+Both **automated** and **manual** tests were conducted to ensure the functionality and reliability of the application.
+
+- **Automated Testing**: Automated tests were written using Django’s built-in unittest framework. These tests focused on:
+    - Models – Validating data structure, relationships, and methods
+    - Forms – Ensuring proper field validations and behavior
+    - Views – Testing access control, response codes, and redirections
+All test files can be found in the tests.py file located within each app. These tests allowed quick verification of core logic and user authorization rules.
+
+- **Manual Testing**: Manual testing was carried out to check:
+    - Visual consistency – Ensuring that pages display correctly across devices and screen sizes
+    - Navigation – Confirming that links, buttons, and forms work as expected
+    - User Flow – Testing real interactions, including registering, logging in, booking appointments, and editing profiles
+Manual tests were run in two environments, locally by running python manage.py runserver and on Heroku after deploying the live version of the site
+
+All tests were **completed successfully**, and any bugs discovered during testing were **identified and fixed**.
+
+## 5.2. Validation
 
 # 6. Deployment
 ## 6.1 Heroky Deployment
