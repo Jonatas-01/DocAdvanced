@@ -16,14 +16,14 @@ The platform is designed for teenagers and adults who want a fast and simple way
 - [1. Project Information](#1-project-information)
 - [2. Table of Contents](#2-table-of-contents)
 - [3. User Experience](#3-user-experience)
-    - [3.1. Startegy Plane](#31-startegy-plane)
+    - [3.1. Strategy Plan](#31-Strategy-Plan)
         - [3.1.1. The Ideal](#311-the-ideal)
         - [3.1.2. Site Goal](#312-site-goal)
         - [3.1.3. Epics](#313-epics)
         - [3.1.4. User Stories](#314-user-stories)
-    - [3.2. Scope Plan](#32-scope-plane)
+    - [3.2. Scope Plan](#32-scope-Plan)
         - [3.2.1. Features to Implement](#321-features-to-implement)
-    - [3.3. Structure Plan](#33-structure-plane)
+    - [3.3. Structure Plan](#33-structure-Plan)
         - [3.3.1. Database Scheme](#331-database-scheme)
         - [3.3.2. Wireframes](#332-wireframes)
         - [3.3.3. Fonts](#333-fonts)
@@ -49,17 +49,17 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [5.2.4. Python Validation](#524-python-validation)
     - [5.3. Bugs](#53-bugs)
         - [5.3.1. Fixed Bugs](#531-fixed-bugs)
-        - [5.3.2. Unfiex Bugs](#532-unfiex-bugs)
+        - [5.3.2. Unfixed Bugs](#532-Unfixed-bugs)
     - [5.4. Accessibility](#54-accessibility)
 - [6. Deployment](#6-deployment)
-    - [6.1 Heroku Deployment](#61-heroky-deployment)
+    - [6.1 Heroku Deployment](#61-Heroku-deployment)
 - [7. Technologies and Credits](#7-technologies-and-credits)
     - [Technologies Used](#71-technologies-used)
     - [Credits](#72-credits)
 
 # 3. User Experience
 
-## 3.1. Startegy Plane
+## 3.1. Strategy Plan
 
 ### 3.1.1. The Ideal
 DocAdvanced was made thinking of simplicity and quick consultation booking, easy appointments management. On top of that, the UI was made for easy navigation.
@@ -95,7 +95,7 @@ Story points are used to estimate the effort needed to complete each User Story.
 
 You can view all the User Stories and their details on the [**Kanban board**](https://github.com/users/Jonatas-01/projects/2/views/1).
 
-## 3.2. Scope Plane
+## 3.2. Scope Plan
 After defining the development and organization strategy, the project scope was created.
 
 ### 3.2.1. Features to Implement
@@ -106,14 +106,14 @@ After defining the development and organization strategy, the project scope was 
 - Consultation Handling: Once an appointment is confirmed, the doctor can start the consultation. During the consult, the doctor fills out a form that includes patient intake notes, diagnosis, and a prescription if necessary.
 - Consultation Records: After a consultation is completed, both doctors and patients can view the consult details. These records are displayed on the Consults page, ensuring transparency and easy access to medical history.
 
-## 3.3. Structure Plane
+## 3.3. Structure Plan
 
 ### 3.3.1. Database Scheme
-Bellow you can see the actual database sctructure, made in [Lucid Flowchart](https://lucid.app/) platform website.
-![Database Schema](/docs/structure-plane/Database%20ER%20diagram%20(crow's%20foot).png)
+Bellow you can see the actual database structure, made in [Lucid Flowchart](https://lucid.app/) platform website.
+![Database Schema](/docs/structure-Plan/Database%20ER%20diagram%20(crow's%20foot).png)
 
 ### 3.3.2. Wireframes
-The wireframes were made to organize the design toughts. Plataform used was [Mockflow](https://app.mockflow.com/).
+The wireframes were made to organize the design toughts. Platform used was [Mockflow](https://app.mockflow.com/).
 
 - **Navbar and Footer**: The **Navbar** and **Footer** are displayed on every page of the website to ensure consistent navigation and user experience.
     - The **Navbar** is located at the top of the page. It allows users to easily access the main sections of the site, such as Home, Account, Login, and Register, depending on their authentication status. It adjusts dynamically based on whether the user is logged in and their role (doctor or patient).
@@ -302,7 +302,7 @@ The doctor form includes personal and professional details:
     - Last name
     - Gender
     - Contact Information
-- Professional Detials:
+- Professional Details:
     - Specialty
     - About (a short bio or description of their professional background)
 - Template File: /forms/doctor_form.html - extends `base.html`
@@ -366,7 +366,7 @@ This page ensures that users always have access to their own data and can keep i
     - See all incoming appointment requests from patients.
 - **Manage Appointments:**
     - Confirm an appointment by selecting a consultation date and time.
-    - Start the comfirmed appointments.
+    - Start the confirmed appointments.
     - Reject an appointment if unavailable.
     - Edit a scheduled date if changes are needed.
     - Cancel or delete appointments when appropriate.
@@ -481,7 +481,7 @@ All tests were **completed successfully**, and any bugs discovered during testin
     - See results.
     - Please note this needs to be done for all states of the templates (i.e. Logged In / Logged Out, etc.).
 
- Check the validaiton screenshots in [Validation HTML](/docs/validation/validation-html.md).
+ Check the validation screenshots in [Validation HTML](/docs/validation/validation-html.md).
 
 ### 5.2.2. CSS Validation
 To ensure the code in style.css is compliant with [W3C standards](https://jigsaw.w3.org/css-validator/).
@@ -490,7 +490,7 @@ To ensure the code in style.css is compliant with [W3C standards](https://jigsaw
     - Copy and Paste the code from IDE to validator
     - See results
 
-`style.css` file pass the validation test with **NO ERRORS**.
+`style.css` file passed the validation test with **NO ERRORS**.
 
 ![CSS Validation](/docs/validation/css/css-validation.png)
 
@@ -501,12 +501,12 @@ To ensure JavaScript has no error the code in `*.js` are check in [JSHint](https
     - Copy and Paste the code from IDE to validator
     - See results
 
-`*.js` file pass the validation test with **NO ERRORS**.
+`*.js` file passed the validation test with **NO ERRORS**.
 
 ![JS Validation](/docs/validation/js/js-validation.png)
 
 ### 5.2.4. Python Validation
-We have used [CI Python Linter](https://pep8ci.herokuapp.com/) to check if the matches the PEP8 standards, also we add docstring following [PEP257](https://peps.python.org/pep-0257/) instructions.
+We have used [CI Python Linter](https://pep8ci.herokuapp.com/) to check if the matches PEP8 standards, also we add docstring following [PEP257](https://peps.python.org/pep-0257/) instructions.
 - **Method :**
     - Open all `*.py` files from all apps
     - Copy and Paste the code from IDE to validator
@@ -516,7 +516,7 @@ The project was checked for **PEP8 compliance** using the **CI Python Linter**, 
 
 Other files, such as `models.py` and `forms.py`, were not linted in the same way due to long lines that are structurally difficult to break without reducing readability or introducing complexity. However, **PEP 257-compliant** docstrings were added to all Python files.
 
-Check the screenshot from CI Pyhton Linter [validation-python](/docs/validation/validation-python.md).
+Check the screenshot from CI Python Linter [validation-python](/docs/validation/validation-python.md).
 
 Aside from a few `messages` lines that exceed the standard character limit and are not practical to break without reducing readability, the files successfully passed the **PEP8 validation** with **NO ERRORS**.
 
@@ -531,7 +531,7 @@ Aside from a few `messages` lines that exceed the standard character limit and a
 | 4  | Feedback messages had no styling                      | No CSS classes applied to Django messages                   | Added message tags in `settings.py` to apply Bootstrap classes | ✅ Fixed |
 | 5  | Modals were not displaying unique values per card     | Only one modal was used for all cards                       | Created a modal inside the loop and used `data-` attributes per item| ✅ Fixed |
 
-### 5.3.2. Unfiex Bugs
+### 5.3.2. Unfixed Bugs
 All known bugs identified during development and testing have been resolved.  
 **There are currently no unfixed bugs in the application.**
 
@@ -560,7 +560,7 @@ Lighthouse Score:
 A screenshot of the Lighthouse report can be included here: [Lighthouse Accessibility Report](/docs/lighthouse/lighthouse.md)
 
 # 6. Deployment
-## 6.1 Heroky Deployment
+## 6.1 Heroku Deployment
 **Objective:** Deploy the live version of the DocAdvanced platform so that users can interact with the application online.
 
 **Steps:**
