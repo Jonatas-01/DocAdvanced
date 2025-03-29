@@ -47,6 +47,9 @@ The platform is designed for teenagers and adults who want a fast and simple way
         - [5.2.2. CSS Validation](#522-css-validation)
         - [5.2.3. JavaScript Validation](#523-javascript-validation)
         - [5.2.4. Python Validation](#524-python-validation)
+    - [5.3. Bugs](#53-bugs)
+        - [5.3.1. Fixed Bugs](#531-fixed-bugs)
+        - [5.3.2. Unfiex Bugs](#532-unfiex-bugs)
 - [6. Deployment](#6-deployment)
     - [6.1 Heroku Deployment](#61-heroky-deployment)
 - [7. Technologies and Credits](#7-technologies-and-credits)
@@ -74,7 +77,7 @@ Check the Kanban board below
 They were added to a [**Kanban Board**](https://github.com/users/Jonatas-01/projects/2/views/1) on the GitHub platform to help manage progress clearly and efficiently. Each Epic was later broken down into smaller tasks called **User Stories**, which made it easier to track and complete specific parts of the project.
 
 ### 3.1.4. User Stories
-**User Stories** are small parts of an Epic, created to break down tasks and deliver value to the user. A total of **29 User Stories** were written, all from the user’s perspective.
+**User Stories** are small parts of an Epic, created to break down tasks and deliver value to the user. A total of **34 User Stories** were written, all from the user’s perspective.
 
 To help define priorities and estimate effort, **labels** and **story points** were added to each task.
 
@@ -517,6 +520,19 @@ Check the screenshot from CI Pyhton Linter [validation-python](/docs/validation/
 Aside from a few `messages` lines that exceed the standard character limit and are not practical to break without reducing readability, the files successfully passed the **PEP8 validation** with **NO ERRORS**.
 
 ## 5.3. Bugs
+
+### 5.3.1. Fixed Bugs
+| ID | Bug Description                                      | Cause                                                       | Fix                                                           | Status  |
+|----|-------------------------------------------------------|-------------------------------------------------------------|----------------------------------------------------------------|---------|
+| 1  | Consults were not being displayed                     | Parameter was not passed in the view                        | Created the variable and passed it to the template             | ✅ Fixed |
+| 2  | Buttons overflowed on desktop view                    | Spacing issue in the layout                                 | Updated layout to display buttons in a vertical column         | ✅ Fixed |
+| 3  | Logged-in users could access login/register pages     | No condition to block access for authenticated users        | Added `if` statement to redirect logged-in users               | ✅ Fixed |
+| 4  | Feedback messages had no styling                      | No CSS classes applied to Django messages                   | Added message tags in `settings.py` to apply Bootstrap classes | ✅ Fixed |
+| 5  | Modals were not displaying unique values per card     | Only one modal was used for all cards                       | Created a modal inside the loop and used `data-` attributes per item| ✅ Fixed |
+
+### 5.3.2. Unfiex Bugs
+All known bugs identified during development and testing have been resolved.  
+**There are currently no unfixed bugs in the application.**
 
 # 6. Deployment
 ## 6.1 Heroky Deployment
