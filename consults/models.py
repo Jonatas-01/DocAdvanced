@@ -3,6 +3,12 @@ from appointments.models import Appointment
 
 
 class Consult(models.Model):
+    """
+    A Django model representing a medical consultation record.
+    This model stores detailed information about a medical consultation, including patient
+    symptoms, medical history, and the doctor's diagnosis and prescription.
+    """
+
     appointment = models.OneToOneField(
         Appointment, on_delete=models.CASCADE, related_name='consult')
 

@@ -10,15 +10,17 @@ from .models import Consult
 def start_consult(request, appointment_id):
     """
     Start a medical consultation for a specific appointment.
-    This view handles both GET and POST requests for creating a medical consultation.
-    Only doctors are authorized to access this functionality. For POST requests,
-    it creates a new consultation record with the provided medical information
-    and closes the associated appointment.
+    This view handles both GET and POST requests for creating
+    a medical consultation.
+    Only doctors are authorized to access this functionality. For POST
+    requests, it creates a new consultation record with the provided
+    medical information and closes the associated appointment.
     Args:
         request: The HTTP request object
         appointment_id (int): The ID of the appointment for the consultation
     Returns:
-        GET: Renders the start_consult.html template with the appointment context
+        GET: Renders the start_consult.html template with the
+        appointment context
         POST: Redirects to the consults page after creating the consultation
     Raises:
         Http404: If the appointment with given ID does not exist
@@ -72,19 +74,22 @@ def start_consult(request, appointment_id):
 def edit_consult(request, consult_id):
     """
     Edit an existing consultation record.
-    This view function allows doctors to modify the details of an existing consultation.
+    This view function allows doctors to modify the details of an
+    existing consultation.
     Only users with the 'doctor' role can access this functionality.
     Args:
         request: The HTTP request object.
         consult_id (int): The ID of the consultation to edit.
     Returns:
         HttpResponse: Renders the edit consultation form on GET requests.
-        HttpResponseRedirect: Redirects to consults list page after successful update on POST requests.
+        HttpResponseRedirect: Redirects to consults list page after
+        successful update on POST requests.
     Raises:
         Http404: If the consultation with given ID does not exist.
     Notes:
         - Checks if user has doctor role before allowing access
-        - Updates the following fields: symptoms, allergies, medications, diagnosis, prescription, notes
+        - Updates the following fields: symptoms, allergies, medications,
+        diagnosis, prescription, notes
         - Shows success message after successful update
     """
     if request.user.role != 'doctor':
@@ -112,15 +117,15 @@ def edit_consult(request, consult_id):
 def consults_view(request):
     """
     View function for handling consult-related operations.
-    This view handles both GET and POST requests for consults. For GET requests, it displays
-    consults based on the user's role (doctor or patient). For POST requests, it handles
-    consult deletion.
+    This view handles both GET and POST requests for consults. For GET requests,
+    it displays consults based on the user's role (doctor or patient). For POST
+    requests, it handles consult deletion.
     Args:
         request: HttpRequest object containing metadata about the request
     Returns:
         HttpResponse: Renders consults_view.html template with consults data
-        HttpResponseRedirect: Redirects to appropriate form if profile is incomplete
-                             or to consults page after deletion
+        HttpResponseRedirect: Redirects to appropriate form if profile
+        is incomplete or to consults page after deletion
     Raises:
         Http404: If the requested consult for deletion doesn't exist
     Notes:
