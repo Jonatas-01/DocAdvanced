@@ -365,3 +365,18 @@ textarea.form-control {
     color: #666;
     margin-bottom: 30px;
 }
+
+/* Consult details */
+.info-box {
+    border-radius: 8px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.details-info {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 0;
+    padding-right: 8px;
+}

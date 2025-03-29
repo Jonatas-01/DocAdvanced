@@ -38,6 +38,7 @@
                     <div class="modal-body">
                         <div class="">
                             <div class="row row-cols-1 row-cols-md-2">
+                                {% if request.user.role == 'patient' %}
                                 <div class="col">
                                     <p class="text-secondary my-0">Doctor</p>
                                     <p class="fs-5 details-info text-capitalize">
@@ -48,40 +49,57 @@
                                     <p class="fs-5 details-info text-capitalize" style="min-height: 74px;">
                                         {{ consult.appointment.doctor.specialty }}</p>
                                 </div>
+                                {% else %}
+                                <div class="col">
+                                    <p class="text-secondary my-0">Patient</p>
+                                    <p class="fs-5 details-info text-capitalize">{{ consult.appointment.patient.first_name }} {{ consult.appointment.patient.last_name }}</p>
+                                </div>
+                                {% endif %}
                             </div>
                             <hr class="mt-2">
 
                             <h4>Intake Form</h4>
-                            <div class="row row-cols-1 row-cols-md-2">
+                            <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <div class="col">
-                                    <p class="text-secondary my-0">Symptoms</p>
-                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.symptoms }}</p>
+                                    <div class="info-box h-100">
+                                        <p class="text-secondary my-0">Symptoms</p>
+                                        <p class="details-info overflow-auto">{{ consult.symptoms }}</p>
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <p class="text-secondary my-0">Allergies</p>
-                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.allergies }}</p>
+                                    <div class="info-box h-100">
+                                        <p class="text-secondary my-0">Allergies</p>
+                                        <p class="details-info overflow-auto">{{ consult.allergies }}</p>
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <p class="text-secondary my-0">Current Medications</p>
-                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.medications }}</p>
+                                    <div class="info-box h-100">
+                                        <p class="text-secondary my-0">Current Medications</p>
+                                        <p class="details-info overflow-auto">{{ consult.medications }}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <hr class="mt-2">
+                            <hr class="mt-4">
 
                             <h4>Consult Result</h4>
-                            <div class="row row-cols-1 row-cols-md-2">
+                            <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <div class="col">
-                                    <p class="text-secondary my-0">Diagnosis</p>
-                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.diagnosis }}</p>
+                                    <div class="info-box h-100">
+                                        <p class="text-secondary my-0">Diagnosis</p>
+                                        <p class="details-info overflow-auto">{{ consult.diagnosis }}</p>
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <p class="text-secondary my-0">Prescription</p>
-                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.prescription }}
-                                    </p>
+                                    <div class="info-box h-100">
+                                        <p class="text-secondary my-0">Prescription</p>
+                                        <p class="details-info overflow-auto">{{ consult.prescription }}</p>
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <p class="text-secondary my-0">Additional Notes</p>
-                                    <p class="fs-5 details-info" style="min-height: 74px;">{{ consult.notes }}</p>
+                                    <div class="info-box h-100">
+                                        <p class="text-secondary my-0">Additional Notes</p>
+                                        <p class="details-info overflow-auto">{{ consult.notes }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
