@@ -473,7 +473,7 @@ All tests were **completed successfully**, and any bugs discovered during testin
     - See results ( Appendix 54 )
     - Please note this needs to be done for all states of the templates (i.e. Logged In / Logged Out, etc.)
 
-    Landing page: ok
+ Check the validaiton screenshots in [Validation HTML](/docs/validation/validation-html.md).
 
 
 ## 5.3. Bugs
