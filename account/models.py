@@ -3,6 +3,18 @@ from django.contrib.auth import get_user_model
 
 
 class PatientDetails(models.Model):
+    """
+    Model class representing patient's detailed information.
+    Attributes:
+        user (User): One-to-one relationship with the User model
+        first_name (str): Patient's first name
+        last_name (str): Patient's last name
+        age (int): Patient's age as a positive integer
+        gender (str): Patient's gender, choice between 'Male' or 'Female'
+        contact_info (str): Patient's email address
+        medical_history (str): Optional text field for patient's medical history
+        allergies (str): Optional text field for patient's allergies
+    """
     GENDER_CHOICES = (
         ('Male', 'Male'),
         ('Female', 'Female')
@@ -25,6 +37,21 @@ class PatientDetails(models.Model):
 
 
 class DoctorDetails(models.Model):
+    """
+    Model representing detailed information about a doctor.
+    Attributes:
+        user (User): One-to-one relationship with the base User model
+        first_name (str): Doctor's first name
+        last_name (str): Doctor's last name
+        gender (str): Doctor's gender, chosen from GENDER_CHOICES
+        contact_info (str): Doctor's contact email address
+        specialty (str): Doctor's medical specialty, chosen from SPECIALTY_CHOICES
+        about (text): Detailed description or biography of the doctor
+    Constants:
+        SPECIALTY_CHOICES (tuple): Available medical specialties
+        GENDER_CHOICES (tuple): Available gender options
+    """
+
     SPECIALTY_CHOICES = (
         ('Cardiology', 'Cardiology'),
         ('Orthopedics', 'Orthopedics'),

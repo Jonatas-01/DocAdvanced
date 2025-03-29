@@ -466,15 +466,36 @@ All tests were **completed successfully**, and any bugs discovered during testin
 ## 5.2. Validation
 ### 5.2.1. HTML Validation
 - To ensure source code generated from all `*.html` templates is compliant with [W3C standards](https://validator.w3.org/).
-- Method :
-    - Open each page of the project
-    - In Chrome : Right click on page background and select View Page Source
-    - Copy and Paste the generated code from browser to validator
-    - See results ( Appendix 54 )
-    - Please note this needs to be done for all states of the templates (i.e. Logged In / Logged Out, etc.)
+- **Method :**
+    - Open each page of the project.
+    - In Browser : Right click on page background and select View Page Source.
+    - Copy and Paste the generated code from browser to validator.
+    - See results.
+    - Please note this needs to be done for all states of the templates (i.e. Logged In / Logged Out, etc.).
 
  Check the validaiton screenshots in [Validation HTML](/docs/validation/validation-html.md).
 
+### 5.2.3. CSS Validation
+To ensure the code in style.css is compliant with [W3C standards](https://jigsaw.w3.org/css-validator/).
+- **Method :**
+    - Open the style.css file
+    - Copy and Paste the code from IDE to validator
+    - See results
+
+`style.css` file pass the validation test with **NO ERRORS**.
+
+![CSS Validation](/docs/validation/css/css-validation.png)
+
+### 5.2.4. JavaScript Validation
+To ensure JavaScript has no error the code in `*.js` are check in [JSHint](https://jshint.com/).
+- **Method :**
+    - Open the `.js` files
+    - Copy and Paste the code from IDE to validator
+    - See results
+
+`*.js` file pass the validation test with **NO ERRORS**.
+
+![JS Validation](/docs/validation/js/js-validation.png)
 
 ## 5.3. Bugs
 

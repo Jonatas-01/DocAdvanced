@@ -44,21 +44,21 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link fs-6 {% if request.path == my_home %}active{% endif %}" aria-current="page"
+                        <a class="nav-link fs-6 {% if request.path == my_home %}active" aria-current="page{% endif %}"
                             href="{% url 'home' %}">Home</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link fs-6 {% if request.path == appointments_view %}active{% endif %}"
-                            aria-current="page" href="{% url 'appointments' %}">Appointments</a>
+                        <a class="nav-link fs-6 {% if request.path == appointments_view %}active" aria-current="page{% endif %}" 
+                        href="{% url 'appointments' %}">Appointments</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 {% if request.path == consults_view %}active{% endif %}"
-                            aria-current="page" href="{% url 'consults' %}">Consults</a>
+                        <a class="nav-link fs-6 {% if request.path == consults_view %}active" aria-current="page{% endif %}" 
+                        href="{% url 'consults' %}">Consults</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 {% if request.path == account_view %}active{% endif %}"
-                            aria-current="page" href="{% url 'account-details' %}">Account</a>
+                        <a class="nav-link fs-6 {% if request.path == account_view %}active" aria-current="page{% endif %}" 
+                        href="{% url 'account-details' %}">Account</a>
                     </li>
                     {% endif %}
                 </ul>
@@ -66,17 +66,17 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-end">
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link fs-6 p-2 {% if request.path == logout %}active{% endif %}"
-                                id="logout-nav" aria-current="page" href="{% url 'logout' %}">Log Out</a>
+                            <a class="nav-link fs-6 p-2 {% if request.path == logout %}active" aria-current="page{% endif %}"
+                                id="logout-nav" href="{% url 'logout' %}">Log Out</a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link fs-6 {% if request.path == login %}active{% endif %}" aria-current="page"
+                            <a class="nav-link fs-6 {% if request.path == login %}active" aria-current="page{% endif %}"
                                 href="{% url 'login' %}">Log In</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-6 p-2 {% if request.path == registration %}active{% endif %}"
-                                id="register-nav" aria-current="page" href="{% url 'register' %}">Register</a>
+                            <a class="nav-link fs-6 p-2 {% if request.path == registration %}active" aria-current="page{% endif %}"
+                                id="register-nav" href="{% url 'register' %}">Register</a>
                         </li>
                         {% endif %}
                     </ul>
