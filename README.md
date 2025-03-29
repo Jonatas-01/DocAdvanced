@@ -44,7 +44,9 @@ The platform is designed for teenagers and adults who want a fast and simple way
     - []()
 - [6. Deployment](#6-deployment)
     - [6.1 Heroku Deployment](#61-heroky-deployment)
-- [7. Technologies and Credits]()
+- [7. Technologies and Credits](#7-technologies-and-credits)
+    - [Technologies Used](#71-technologies-used)
+    - [Credits](#72-credits)
 
 # 3. User Experience
 
@@ -473,3 +475,27 @@ Allow patients to rate doctors and leave feedback after consultations.
 8. View Deployment Logs
     - Monitor the logs to ensure the deployment was successful
     - If everything works, you’ll be able to click "View" to open the live application
+
+# 7. Technologies and Credits
+## 7.1 Technologies Used
+- [Django](https://www.djangoproject.com/) - High-level Python web framework used to build the backend and manage the application's logic, models, and authentication system.
+- [Python](https://www.python.org/) - The core programming language used for backend development.
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Adds interactivity and dynamic behavior to the frontend.
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - Structures the content of the web pages.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - Styles the HTML content and ensures a responsive and visually appealing design.
+- [BootStrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) - A CSS framework used to build responsive layouts and styled components quickly.
+- [Heroku](https://www.heroku.com/) - Cloud platform used to deploy and host the live version of the application.
+- [MockFlow](https://mockflow.com/) - Used for creating wireframes and planning the UI/UX design.
+- [Git](https://git-scm.com/) - Version control system used to track code changes during development.
+- [GitHub](https://github.com/) - Code hosting platform used for collaboration and deployment integration.
+- [VS Code](https://code.visualstudio.com/) - Code editor used throughout the development process.
+
+## 7.2 Credits
+- [Google Fonts](https://fonts.google.com/) - used for picking the best typography
+- [FreePik](https://freepik.com) - used as images database
+- [FlatIcon](https://www.flaticon.com/) - used to get icon to user on browser window
+- [FontAwesome](https://fontawesome.com/) - used as icon database
+- [Django](https://www.djangoproject.com/) - useful documentation
+- [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/) - bootstrap documentation for useful information
+- [Lucid](https://lucid.app/) - to database schema creation
+- [Dribbble](https://dribbble.com/) - for design ideas
