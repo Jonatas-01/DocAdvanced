@@ -469,6 +469,14 @@ All test files can be found in the tests.py file located within each app. These 
     - User Flow – Testing real interactions, including registering, logging in, booking appointments, and editing profiles
 Manual tests were run in two environments, locally by running python manage.py runserver and on Heroku after deploying the live version of the site
 
+- While performing manual and automated testing, I encountered several functional and layout issues in the application. Each of these bugs was identified, investigated, and resolved as part of the development process:
+    - Consults were not being displayed: This occurred because a required parameter was not passed from the view to the template. I resolved this by creating the necessary variable and ensuring it was included in the context.
+    - Buttons were overflowing on desktop view: The layout had spacing issues, causing buttons to extend outside their container. I fixed this by updating the layout to display buttons in a vertical column, improving responsiveness.
+    - Logged-in users could still access the login and register pages: There was no condition in place to restrict authenticated users. I added an if statement to redirect logged-in users away from these pages, ensuring proper user flow.
+    - Feedback messages had no styling: Django messages were displayed without visual formatting because no CSS classes were applied. I corrected this by adding appropriate message tags in settings.py to apply Bootstrap alert classes.
+    - Modals were not displaying unique values per card: Only one modal was being reused across multiple cards, leading to data overlap. I resolved this by generating a separate modal inside the loop for each item and assigning individual data- attributes.
+
+
 All tests were **completed successfully**, and any bugs discovered during testing were **identified and fixed**.
 
 ## 5.2. Validation
